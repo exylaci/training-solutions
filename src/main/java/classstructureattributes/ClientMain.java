@@ -10,11 +10,11 @@ public class ClientMain {
         Scanner scanner = new Scanner(System.in);
         client.name= scanner.nextLine();
 
-        System.out.println("What is the address of the client?");
-        client.address = scanner.nextLine();
-
         System.out.println("When the client was born?");
         client.year = scanner.nextInt();
+
+        System.out.println("What is the address of the client?");
+        client.address = scanner.nextLine();
 
         System.out.println("Client name:" + client.name);
         System.out.println("Client birth date:" + client.year);
