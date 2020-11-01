@@ -13,6 +13,6 @@ public class Registration {
         String email = scanner.nextLine();
 
         System.out.println("Hi " + name + "!");
-        System.out.println("You've successfully registered with " + email + " e-mail address.");
+        System.out.println("You've successfully registered with the: " + email + " e-mail address.");
     }
 }
