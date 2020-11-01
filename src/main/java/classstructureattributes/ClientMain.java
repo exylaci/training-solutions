@@ -11,13 +11,8 @@ public class ClientMain {
         client.name= scanner.nextLine();
 
         System.out.println("When the client was born?");
-        try {
-            client.year = scanner.nextInt();                  //ez után már nem kéri be a címet
-        }catch(Exception e)
-        {
-            System.out.println("It isn't a number!");
-        }
-        //client.year = Integer.parseInt(scanner.nextLine()); //így bekéri a címet is
+        client.year = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("What is the address of the client?");
         client.address = scanner.nextLine();
