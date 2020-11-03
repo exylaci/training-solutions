@@ -9,6 +9,7 @@ public class Investment {
     public Investment(int fund, int interestRate) {
         this.fund = fund;
         this.interestRate = interestRate;
+        active=true;
     }
 
     public int getFund() {
@@ -16,9 +17,13 @@ public class Investment {
     }
 
     public double getYield(int days){
-return  0;
+        if (days>365) days=365;
+        return fund * (days/365.0) * interestRate/100.0;
     }
+
     public double close(int days){
-return 0;
+        if (!active) return 0;
+        active=false;
+        return  (getYield(days)+fund) * (1 - 0.3/100);
     }
 }
