@@ -3,8 +3,8 @@ package week02;
 import java.util.Scanner;
 
 public class Product {
-    String name;
-    String code;
+    private String name;
+    private String code;
 
     public Product(String name, String code) {
         this.name = name;
