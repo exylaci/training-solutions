@@ -26,6 +26,5 @@ public class Registration {
                 "Az e-mail cím rossz.");
 
 
-
     }
 }
