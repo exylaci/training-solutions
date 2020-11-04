@@ -12,7 +12,8 @@ public class Product {
     }
 
     public boolean areTheyEqual(Product p){
-        return this.name.equals(p.name) ? true : false;
+        return this.name.equals(p.name) && Math.abs( this.code.length()-p.code.length())<2
+                ? true : false;
     }
 
     public String getName() {
