@@ -14,10 +14,27 @@ public class ArrayOfArraysMain {
         return array;
     }
 
+    public int[][] triangularMatrix(int size){
+        int[][] array = new int[size][];
+        for (int i=0 ; i<size ; ++i) {
+            array[i] = new int[i+1];
+            for (int j=0 ; j<i+1 ; ++j){
+                array[i][j]=i;
+            }
+        }
+        return array;
+    }
+
     public void printArrayOfArrays(int[][] a){
         for (int[] oneArray : a ) {
             for (int oneElement : oneArray){
-                System.out.printf("   ".substring(0,2-(int)Math.log10(oneElement)) + oneElement + " ");
+                int length;
+                if (oneElement>0) {
+                    length = (int) Math.log10(oneElement);
+                } else {
+                    length=0;
+                }
+                System.out.printf("   ".substring(0,2-length) + oneElement + " ");
             }
             System.out.println();
         }
@@ -25,7 +42,11 @@ public class ArrayOfArraysMain {
 
     public static void main(String[] args) {
         ArrayOfArraysMain a = new ArrayOfArraysMain();
-        System.out.println(Arrays.deepToString(a.multiplicationTable(4)));
-        a.printArrayOfArrays(a.multiplicationTable(10));
+        System.out.println( Arrays.deepToString( a.multiplicationTable(4 ) ) );
+        a.printArrayOfArrays(a.multiplicationTable(4));
+        System.out.println();
+
+        System.out.println( Arrays.deepToString( a.triangularMatrix(4) ) );
+        a.printArrayOfArrays(a.triangularMatrix(4));
     }
 }
