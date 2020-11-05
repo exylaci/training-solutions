@@ -1,7 +1,10 @@
 package arrays;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class ArraysMain {
 
@@ -28,8 +31,28 @@ public class ArraysMain {
         return  sb.substring(0,sb.length()-2).toString();
     }
 
+    public List<String> daysOfWeek(){
+        return Arrays.asList( new String[] {
+                "hétfő","kedd","szerda","csütörtök","péntel","szombat","vasárnap"});
+    }
+
+    public String multiplicationTableAsString(int size){
+        int[][] table = new int[size][size];
+        for(int i=0 ; i<size ; ++i)
+            for (int j=0; j<size ; ++j)
+                table[i][j]=(i+1)*(j+1);
+        return Arrays.deepToString(table);
+    }
+
     public static void main(String[] args) {
         ArraysMain a = new ArraysMain();
         System.out.println(a.numberOfDaysAsString());
+        System.out.println("");
+
+        System.out.println(a.daysOfWeek());
+        System.out.println("");
+
+        System.out.println(a.multiplicationTableAsString(4));
+        System.out.println();
     }
 }
