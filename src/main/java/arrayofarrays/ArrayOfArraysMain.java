@@ -1,6 +1,7 @@
 package arrayofarrays;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 public class ArrayOfArraysMain {
@@ -21,6 +22,16 @@ public class ArrayOfArraysMain {
             for (int j=0 ; j<i+1 ; ++j){
                 array[i][j]=i;
             }
+        }
+        return array;
+    }
+
+    public int[][] getValues(){
+        int[][] array = new int[12][];
+        for(int i=1 ; i<13 ; ++i){
+            LocalDate date = LocalDate.of(1999,i,1);
+            int month = date.lengthOfMonth();
+            array[i-1] = new int[month];
         }
         return array;
     }
@@ -48,5 +59,9 @@ public class ArrayOfArraysMain {
 
         System.out.println( Arrays.deepToString( a.triangularMatrix(4) ) );
         a.printArrayOfArrays(a.triangularMatrix(4));
+        System.out.println();
+
+        System.out.println( Arrays.deepToString( a.getValues() ) );
+        a.printArrayOfArrays(a.getValues());
     }
 }
