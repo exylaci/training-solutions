@@ -1,6 +1,8 @@
 package array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.OptionalInt;
 
 public class ArrayHandler {
@@ -28,5 +30,8 @@ public class ArrayHandler {
 
         System.out.println( a.contains(i, 3) );
         System.out.println( a.find(i, 3) );
+
+        List<Integer> t = new ArrayList<>();
+
     }
 }
