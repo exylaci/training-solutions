@@ -1,8 +1,6 @@
 package lists;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Capsules {
@@ -40,5 +38,3 @@ public class Capsules {
 
     }
 }
-
-//Írj egy main() metódust, mely teszteli a metódusok működését.
