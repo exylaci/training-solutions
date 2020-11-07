@@ -36,5 +36,10 @@ public class Capsules {
         capsules.removeLast();
         System.out.println(capsules.getColors().toString());
 
+        System.out.println("Bonusz 1.");
+        List<String > capsules2 = new ArrayList<>();
+        capsules2 = capsules.getColors();
+        capsules2.clear();  //Ez törli az eredeti capsules lista tartalmát, mert a capsules2 ugyanoda mutat a HEAP-ben.
+        System.out.println(capsules.getColors().toString());
     }
 }
