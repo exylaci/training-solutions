@@ -94,15 +94,5 @@ public class ArraysMain {
                 new int[] {12,65,23,45,29},
                 new int[] {45,29,23,12,65}));
         System.out.println();
-
-//        double[] teszt = new double[] {1,2,3};
-//        System.out.println(
-//                Arrays.asList(new int[]{1}).
-//                        contains(Arrays.asList(new  int[]{1})));
-//        System.out.println(Arrays.stream(teszt).anyMatch(
-//            p -> Arrays.stream(new double[]{1}).equals(p
-//        ));
-
-
     }
 }
