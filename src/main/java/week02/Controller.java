@@ -72,9 +72,6 @@ public class Controller {
                 scanner.nextLine();
                 office.printAreasLargerThan(size);
                 break;
-            default :
-                System.out.println("Ileyn menüpont nincs!");
-                break;
         }
         return selection != 8;
     }
