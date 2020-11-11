@@ -34,6 +34,6 @@ public class PrimitiveTypes {
         System.out.println(Integer.toBinaryString(65));
 
         System.out.println(new Integer(1) + new Integer(2));
-        // Az 1 int literált kvázi "boxingolta" Integerbe és összeadja a 2 int literált Integerbe "boxingolva" = 3;
+        // Az 1 int literált kvázi "boxingolta" Integerbe és összeadja az Integerbe "boxingolt" 2 int literált --> = 3;
     }
 }
