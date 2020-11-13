@@ -5,7 +5,7 @@ public class Operation {
     private int rightValue;
 
     public Operation(String s) {
-        if (s==null) {
+        if (s==null || !s.contains("+")) {
             throw new IllegalArgumentException("Wrong argument!");
         }
         String[] parts = s.split("\\+");
@@ -13,13 +13,11 @@ public class Operation {
         rightValue = Integer.parseInt(parts[1]);
     }
 
-    public int getResoult(){
+    public int getResult(){
         return leftValue+rightValue;
     }
-
-    public static void main(String[] args) {
-        Operation operation = new Operation("3+4");
-        System.out.println(operation.getResoult());
-    }
-
+//    public static void main(String[] args) {
+//        Operation operation = new Operation("3+4");
+//        System.out.println(operation.getResult());
+//    }
 }
