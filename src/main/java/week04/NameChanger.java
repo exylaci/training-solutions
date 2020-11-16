@@ -10,11 +10,14 @@ public class NameChanger {
         this.fullName = fullName;
     }
 
-    public String changeFirstName(String firstName){
+    public void changeFirstName(String firstName){
         int pos = fullName.indexOf(' ');
         if ( pos > 0 ) {
             fullName = firstName + fullName.substring(pos);
         }
+    }
+
+    public String getFullName() {
         return fullName;
     }
 }

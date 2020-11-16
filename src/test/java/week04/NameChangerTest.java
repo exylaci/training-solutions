@@ -21,8 +21,8 @@ public class NameChangerTest {
     @Test
     public void changeFirstNameTest() {
         NameChanger name = new NameChanger("Gábor Áron");
-
-        assertEquals("Nagy Áron",  new NameChanger("Gábor Áron").changeFirstName("Nagy"));
+        name.changeFirstName("Nagy");
+        assertEquals("Nagy Áron",  name.getFullName() );
     }
 
 }
