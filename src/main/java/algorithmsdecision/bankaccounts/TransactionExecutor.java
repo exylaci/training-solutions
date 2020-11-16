@@ -23,7 +23,6 @@ public class TransactionExecutor {
         }
     }
 }
-
 // megkap egy tranzakció listát és egy számlák listát paraméterként és végrehajtja az összes tranzakciót, azaz
 //   minden tranzakcióhoz megkeresi az érintett számlát és
 //   ha megtalálja, akkor a creditOrDebit értéke alapján a számla megfelelő metódusának

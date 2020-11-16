@@ -1,13 +1,11 @@
 package algorithmsdecision.bankaccounts;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class TransactionExecutorTest {
 
@@ -27,26 +25,19 @@ public class TransactionExecutorTest {
 
     @Test
     public void testExecuteBankAccountCredit() {
-
         test.executeTransactions(transactions, accounts);
         assertEquals(2100, accounts.get(0).getBalance());
-
     }
 
     @Test
     public void testExecuteBankAccountDebitWithDrawOk() {
-
         test.executeTransactions(transactions, accounts);
         assertEquals(1800, accounts.get(1).getBalance());
-
     }
 
     @Test
     public void testExecuteBankAccountDebitWithDrawNotOk() {
-
         test.executeTransactions(transactions, accounts);
         assertEquals(90, accounts.get(2).getBalance());
-
     }
-
 }

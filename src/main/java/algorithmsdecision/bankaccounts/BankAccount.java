@@ -36,8 +36,6 @@ public class BankAccount {
         return balance;
     }
 }
-
-
 //    nameOfOwner, a számla tulajdonosának neve
 //    accountNumber, a számlaszám
 //    balance, egyenleg

@@ -1,14 +1,12 @@
 package algorithmsdecision.bankaccounts;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class TransactionDecisionMakerTest {
 
@@ -28,33 +26,28 @@ public class TransactionDecisionMakerTest {
 
     @Test
     public void testContainsCreditEntryGreaterReturnTrue() {
-
         String start = "2017-03-06 12:32";
         LocalDateTime startTime = LocalDateTime.parse(start, formatter);
         String end = "2017-03-07 12:32";
         LocalDateTime endTime = LocalDateTime.parse(end, formatter);
 
         TransactionDecisionMaker test = new TransactionDecisionMaker();
-        assertTrue(test.containsCreditEntryGreaterThan(transactions, startTime, endTime, 200));
-
+        assertFalse(test.containsCreditEntryGreaterThan(transactions, startTime, endTime, 200));
     }
 
     @Test
     public void testContainsCreditEntryGreaterReturnFalseBecauseOfTime() {
-
         String start = "2017-03-05 12:32";
         LocalDateTime startTime = LocalDateTime.parse(start, formatter);
         String end = "2017-03-06 12:32";
         LocalDateTime endTime = LocalDateTime.parse(end, formatter);
 
         TransactionDecisionMaker test = new TransactionDecisionMaker();
-        assertFalse(test.containsCreditEntryGreaterThan(transactions, startTime, endTime, 200));
-
+        assertTrue(test.containsCreditEntryGreaterThan(transactions, startTime, endTime, 200));
     }
 
     @Test
     public void testContainsCreditEntryGreaterReturnFalseBecauseOfMin() {
-
         String start = "2017-03-04 12:32";
         LocalDateTime startTime = LocalDateTime.parse(start, formatter);
         String end = "2017-03-06 12:32";
@@ -62,7 +55,5 @@ public class TransactionDecisionMakerTest {
 
         TransactionDecisionMaker test = new TransactionDecisionMaker();
         assertFalse(test.containsCreditEntryGreaterThan(transactions, startTime, endTime, 200000));
-
     }
-
 }

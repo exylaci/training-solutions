@@ -1,13 +1,11 @@
 package algorithmsdecision.bankaccounts;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class BankAccountDecisionMakerTest {
 
@@ -19,12 +17,9 @@ public class BankAccountDecisionMakerTest {
 
     @Test
     public void testContainsBalanceGreaterThan() {
-
         BankAccountDecisionMaker test = new BankAccountDecisionMaker();
 
         assertTrue(test.containsBalanceGreaterThan(accounts, 150));
         assertFalse(test.containsBalanceGreaterThan(accounts, 250));
-
     }
-
 }
