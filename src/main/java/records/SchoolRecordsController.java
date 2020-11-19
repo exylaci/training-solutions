@@ -1,5 +1,7 @@
 package records;
 
+import enumtype.Coin;
+
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.*;
 
@@ -129,7 +131,7 @@ public class SchoolRecordsController {
         Scanner scanner = new Scanner(System.in);
         MarkType markType = null;
         do {
-            System.out.printf("Osztályzat [A, B, C, D, F]: ");
+            System.out.printf("Osztályzat %s: ",Arrays.deepToString( markType.values() ));
             String answer = scanner.nextLine().toUpperCase().trim();
             try {
                 markType = MarkType.valueOf(answer);
