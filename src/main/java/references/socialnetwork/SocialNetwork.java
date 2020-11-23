@@ -40,4 +40,9 @@ public class SocialNetwork {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return members.toString();
+    }
 }
