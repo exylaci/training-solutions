@@ -20,8 +20,14 @@ public class OperatorsMain {
         i = -1;
         String s = Integer.toBinaryString(i);   // kettes komplemenst csinl
         System.out.println(s);
-//        int j = Integer.parseInt(s, 2);       // "nem tudja", hogy ez egy kettes komplemensben ábrázolt negatív szám.
-        long j = Long.valueOf(s, 2);
+//        int j = Integer.parseInt(s, 2);       // "nem tudja", hogy ez egy kettes komplemensben ábrázolt negatív szám,
+                                                // Így viszont nem fér bele egy (signed) int-be.
+        long j = Long.valueOf(s, 2);       // long-ba már belefér
         System.out.println(j);
+        System.out.println((int)j);             // típus konverzió során a csonkolás után
+                                                // a legemagasabb helyiértéken lévő 1-es miat újra negatív számnak látja
+
+
+        System.out.println(0333);               // oct 333 = dec 219
     }
 }
