@@ -1,16 +1,7 @@
 package introjunit;
 
-
-
-
 //JUnit 4-es verzióval fut, 5-össel már nem!
-
-
-
-
-
 //import org.junit.Test;
-
 //import static org.hamcrest.CoreMatchers.equalTo;
 //import static org.junit.Assert.assertThat;
 
