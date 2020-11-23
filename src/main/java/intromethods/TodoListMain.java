@@ -17,18 +17,21 @@ public class TodoListMain {
         todos.addTodo("tanulás");
         todos.addTodo("alvás");
         System.out.print(todos.numberOfFinishedTodos() + " ");
-        System.out.println(todos.todosToFinish());
+        System.out.println( todos );
 
         todos.finishTodos("fogmosás");
-        System.out.print(todos.numberOfFinishedTodos() + " ");
-        System.out.println(todos.todosToFinish());
+        System.out.print( "\n" + todos.numberOfFinishedTodos() + " " );
+        System.out.println( todos.todosToFinish() );
+        System.out.println( todos );
 
         todos.finishAllTodos(  Arrays.asList( "alvás","játék" ));
-        System.out.print(todos.numberOfFinishedTodos() + " ");
-        System.out.println(todos.todosToFinish());
+        System.out.print( "\n" + todos.numberOfFinishedTodos() + " " );
+        System.out.println( todos.todosToFinish() );
+        System.out.println( todos );
 
         todos.finishAllTodos( todos.todosToFinish() );
-        System.out.print(todos.numberOfFinishedTodos() + " ");
-        System.out.println(todos.todosToFinish());
+        System.out.print( "\n" + todos.numberOfFinishedTodos() + " " );
+        System.out.println( todos.todosToFinish() );
+        System.out.println( todos );
     }
 }

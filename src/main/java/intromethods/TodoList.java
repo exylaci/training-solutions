@@ -43,4 +43,9 @@ public class TodoList {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Todos: " +  todos;
+    }
 }
