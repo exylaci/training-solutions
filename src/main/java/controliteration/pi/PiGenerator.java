@@ -17,6 +17,8 @@ public class PiGenerator {
             }else if ( counter>0 ){
                 pi += counter;
                 counter = 0;
+                //if (pi.length()==1) { pi+='.';}   //first helyett lehetne a pi sztring hosszát is vizsgálni,
+                                                    //de igy lassabb a futás, mert mindig meg kell kérdezni pi hosszát
                 if (first) {
                     pi += '.';
                     first=false;

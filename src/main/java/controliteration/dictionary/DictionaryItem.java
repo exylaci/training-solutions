@@ -12,7 +12,11 @@ public class DictionaryItem {
     public DictionaryItem(String word, List<String> translations) {
         this.word = word;
         this.translations = new ArrayList<>(translations);
-//        addTranslations(translations);
+
+//      addTranslations(translations);          // így is lehet
+
+//      this.translations = translations;       //Így viszont nem jó, mert translations "Arrays.asList()"-tel lett
+                                                //létrehozva, amihez később már nem lehet újabb elemet hpzzáadni.
     }
 
     public void addTranslations(List<String> newTranslations){
