@@ -4,18 +4,18 @@ public class DayInMonth {
 
     public int numberOfDays(int year, String month){
         switch (month.toLowerCase()){
-            case "január": return 31;
-            case "február": break;
-            case "március": return 31;
-            case "április": return 30;
-            case "május": return 31;
-            case "június": return 30;
-            case "július": return 31;
-            case "augusztus": return 31;
-            case "szeptember": return 30;
-            case "október": return 31;
-            case "november": return 30;
+            case "január":
+            case "március":
+            case "május":
+            case "július":
+            case "augusztus":
+            case "október":
             case "december": return 31;
+            case "április":
+            case "június":
+            case "szeptember":
+            case "november": return 30;
+            case "február": break;
             default: throw new IllegalArgumentException("Invalid month: " + month);
         }
         if ( year%4!=0 || (year%4==0 && year%100==0 && year%400!=0) ){
