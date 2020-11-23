@@ -5,5 +5,8 @@ public class Operators {
         return n%2 == 0;
     }
 
+    public int multiplyByPowerOfTwo(int number, int multiply){
+        return number << multiply;
+    }
 
 }
