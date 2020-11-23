@@ -15,6 +15,12 @@ public class Patient {
         if ( yearOfBirth<1900 ){
             throw new IllegalArgumentException("Year cannot be before 1900!");
         }
+
+        SsnValidator ssnValidator = new SsnValidator();
+        if ( ssnValidator.isValidSsn( socialSecurityNumber ) ){
+            throw new IllegalArgumentException("Wrong social security number!");
+        }
+
         this.name = name;
         this.socialSecurityNumber = socialSecurityNumber;
         this.yearOfBirth = yearOfBirth;
