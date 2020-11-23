@@ -35,6 +35,11 @@ public class Member {
 
     @Override
     public String toString() {
+        // return name + " " + connections.toString();
+        //      Nem jó, mert a connections listában Memeber objektumok vannak,
+        //      amiknek a kiírásához ismét ezt a metődust hívná,
+        //      ami mihelyst van legalább egy connection, végtelen metódushívást erredményez.
+
         return name + ": " + connectedNames();
     }
 }
