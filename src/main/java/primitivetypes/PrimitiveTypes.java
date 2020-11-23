@@ -34,6 +34,10 @@ public class PrimitiveTypes {
         System.out.println(Integer.toBinaryString(65));
 
         System.out.println(new Integer(1) + new Integer(2));
-        // Az 1 int literált kvázi "boxingolta" Integerbe és összeadja az Integerbe "boxingolt" 2 int literált --> = 3;
+        // Az 1 int literált betett Integerbe, majd azt autoboxingolta egy int-be.
+        // Az 2 int literált betett Integerbe, majd azt autoboxingolta egy másik int-be.
+        // a két int-et összeadja. Az eredmény = 3.
+        // A 3-mat autoboxingolja Integerbe, amivel meghívja az Integer osztály toString metódusát.
+        // A toString által visszaadott szöveget jeleníti meg print metódus.
     }
 }

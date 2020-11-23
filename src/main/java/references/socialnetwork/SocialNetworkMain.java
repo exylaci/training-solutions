@@ -6,7 +6,7 @@ public class SocialNetworkMain {
         socialNetwork.addMember("Joe");
         socialNetwork.addMember("John");
         socialNetwork.addMember("Jane");
-        socialNetwork.addMember("Richard");x0
+        socialNetwork.addMember("Richard");
 
         socialNetwork.connect("Joe", "John");
         socialNetwork.connect("John", "Joe");
