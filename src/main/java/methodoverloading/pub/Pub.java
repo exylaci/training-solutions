@@ -14,7 +14,7 @@ public class Pub {
     }
 
     public Time getOpenFrom() {
-        return new Time(hours,minutes);
+        return new Time(hours, minutes);
     }
 
     public String getName() {
