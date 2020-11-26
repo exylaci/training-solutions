@@ -1,34 +1,33 @@
 package week05.d4;
 
+import java.lang.invoke.StringConcatException;
 import java.time.LocalDate;
 
 public class Product {
-    private long price;
-    private String currency;
+    public static final String ERROR_MESSAGE = "Currency must be HUF or USD!";
 
-    public Product(long price, String currency) throws  IllegalArgumentException {
-        checkCurrency(currency);
+    private long price;
+    private Currency currency;
+
+    public Product(long price, Currency currency) {
+        if (currency == null) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
         this.price = price;
         this.currency = currency;
     }
 
-    public long convertPrice(String currency) throws IllegalArgumentException {
-        checkCurrency(currency);
+    public long convertPrice(Currency currency) {
+        if (currency == null) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
         if (this.currency == currency) {
             return price;
         }
-        if (currency == "USD") {
+        if (currency == Currency.USD) {
             return price / 300;
         } else {
             return price * 300;
-        }
-
-    }
-
-    private void checkCurrency(String currency) {
-        if (currency == null || currency.isBlank() ||
-                !currency.equals("USD") && !currency.equals("HUF")) {
-            throw new IllegalArgumentException("Currency must be HUF or USD!");
         }
     }
 }
