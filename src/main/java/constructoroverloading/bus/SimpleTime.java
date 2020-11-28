@@ -3,7 +3,7 @@ package constructoroverloading.bus;
 import java.time.LocalTime;
 
 public class SimpleTime {
-    public static String ERROR_MESSAGE = "not null!!!";
+    public static String ERROR_MESSAGE = "Time cannot be null!";
     private int hours;
     private int minutes;
 
