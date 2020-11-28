@@ -2,6 +2,7 @@ package constructoroverloading.bus;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,5 +57,17 @@ public class BusTimeTableTest {
             timetable.nextBus(new SimpleTime(18, 16));
         });
         assertEquals("No more buses today!", ex.getMessage());
+    }
+
+    @Test
+    public void firstBusThrowNoBusAtAll() throws IllegalStateException {
+        Exception exception = assertThrows(IllegalStateException.class, () ->
+                new BusTimeTable(new ArrayList<>()).firstBus());
+        assertEquals("There is no bus at all", exception.getMessage());
+    }
+
+    @Test
+    public void firstBusTest() {
+        assertEquals(new SimpleTime(9, 15).toString(), new BusTimeTable(TIME_TABLE).firstBus().toString());
     }
 }

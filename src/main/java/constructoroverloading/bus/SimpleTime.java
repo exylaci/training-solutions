@@ -33,7 +33,7 @@ public class SimpleTime {
     }
 
     public String toString() {
-        return String.format("%02d:%02d",hours,minutes);
+        return String.format("%02d:%02d", hours, minutes);
     }
 
 
