@@ -17,7 +17,7 @@ public class Patient {
         }
 
         SsnValidator ssnValidator = new SsnValidator();
-        if ( ssnValidator.isValidSsn( socialSecurityNumber ) ){
+        if ( !ssnValidator.isValidSsn( socialSecurityNumber ) ){
             throw new IllegalArgumentException("Wrong social security number!");
         }
 
