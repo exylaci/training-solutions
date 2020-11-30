@@ -1,7 +1,5 @@
 package week06.d1;
 
-import introcontrol.Sum;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +15,10 @@ public class SeparatedSumTest {
         exception = assertThrows(IllegalArgumentException.class, () ->
                 s.sum(""));
         assertEquals("Input string is a must!", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () ->
+                s.sum("1,3;2,4;-3,3;0-4.1"));
+        assertEquals("Wrong format double string!", exception.getMessage());
     }
 
     @Test
