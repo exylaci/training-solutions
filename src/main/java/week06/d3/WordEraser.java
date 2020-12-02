@@ -12,13 +12,9 @@ public class WordEraser {
 
         for (String one : split) {
             if (!word.equals(one)) {
-                result.append(one);
-                result.append(SPLITTER);
+                result.append(one).append(SPLITTER);
             }
         }
-        if (result.length() > 0) {
-            result.deleteCharAt(result.length() - 1);
-        }
-        return result.toString();
+        return result.toString().trim();
     }
 }
