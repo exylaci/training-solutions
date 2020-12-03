@@ -1,6 +1,7 @@
 package inheritancemethods.products;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class PackedProduct extends Product {
     private int packingUnit;
@@ -22,6 +23,9 @@ public class PackedProduct extends Product {
 
     @Override
     public BigDecimal totalWeight(int pieces) {
-        return super.totalWeight(pieces).add(new BigDecimal(Math.ceil((double) pieces / packingUnit)).multiply(weightOfBox));
+        BigDecimal result = super.totalWeight(pieces).
+                add(new BigDecimal(Math.ceil((double) pieces / packingUnit)).multiply(weightOfBox));
+        double integerDigits = Math.floor(Math.log10(result.doubleValue())) + 1;
+        return result.round(new MathContext(super.getNumberOfDecimals() + (int) integerDigits));
     }
 }

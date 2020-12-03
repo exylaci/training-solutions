@@ -1,6 +1,7 @@
 package inheritancemethods.products;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class Product {
     private String name;
@@ -21,10 +22,9 @@ public class Product {
     }
 
     public BigDecimal totalWeight(int pieces) {
-        return unitWeight.multiply(new BigDecimal(pieces));
-    }
-
-    private void checkName(String name) {
+        BigDecimal result = unitWeight.multiply(new BigDecimal(pieces));
+        double integerDigits = Math.floor(Math.log10(result.doubleValue())) + 1;
+        return result.round(new MathContext(numberOfDecimals + (int) integerDigits));
     }
 
     public String getName() {
