@@ -24,7 +24,7 @@ public class ArcherTest {
 
     @Test
     public void kill() {
-        Random random = new Random();  //seed: 123
+        Random random = new Random(123);
         Archer offender = new Archer(new Point(0, 0), random);
         Character defender = new Archer(new Point(12, 0), random);
 
@@ -44,7 +44,7 @@ public class ArcherTest {
 
         offender.secondaryAttack(defender);
 
-          assertEquals(100, offender.getHitPoint());
+        assertEquals(100, offender.getHitPoint());
         assertTrue(defender.getHitPoint() >= 96);
         assertEquals(99, offender.getNumberOfArrow());
     }
