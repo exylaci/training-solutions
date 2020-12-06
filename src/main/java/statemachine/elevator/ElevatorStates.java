@@ -5,7 +5,7 @@ public enum ElevatorStates {
     GROUNDFLOOR_OPEN(0, "Ground Floor Open") {
         @Override
         public ElevatorStates onward() {
-            return GROUNDFLOOR_CLOSE;
+            return GROUNDFLOOR_CLOSED;
         }
 
         @Override
@@ -13,10 +13,10 @@ public enum ElevatorStates {
             return GROUNDFLOOR_OPEN;
         }
     },
-    GROUNDFLOOR_CLOSE(1, "Ground Floor Closed") {
+    GROUNDFLOOR_CLOSED(1, "Ground Floor Closed") {
         @Override
         public ElevatorStates onward() {
-            return FIRST_FLOOR_CLOSE;
+            return FIRST_FLOOR_CLOSED;
         }
 
         @Override
@@ -24,7 +24,7 @@ public enum ElevatorStates {
             return GROUNDFLOOR_OPEN;
         }
     },
-    FIRST_FLOOR_CLOSE(2, "First Floor Closed") {
+    FIRST_FLOOR_CLOSED(2, "First Floor Closed") {
         @Override
         public ElevatorStates onward() {
             return FIRST_FLOOR_OPEN;
@@ -32,7 +32,7 @@ public enum ElevatorStates {
 
         @Override
         public ElevatorStates backward() {
-            return GROUNDFLOOR_CLOSE;
+            return GROUNDFLOOR_CLOSED;
         }
     },
     FIRST_FLOOR_OPEN(3, "First Floor Open") {
@@ -43,20 +43,16 @@ public enum ElevatorStates {
 
         @Override
         public ElevatorStates backward() {
-            return FIRST_FLOOR_CLOSE;
+            return FIRST_FLOOR_CLOSED;
         }
     };
     private final int value;
     private final String name;
 
     ElevatorStates(int value, String name) {
-        this.value=value;
-        this.name=name;
+        this.value = value;
+        this.name = name;
     }
-
-//    ElevatorStates() {
-//        this(0,"GROUND FLOOR OPEN");
-//    }
 
     public int getValue() {
         return value;

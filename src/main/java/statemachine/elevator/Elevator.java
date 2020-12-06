@@ -9,16 +9,17 @@ public class Elevator {
     private List<ElevatorStates> targets = new ArrayList<>();
 
     public Elevator() {
-        current = ElevatorStates.GROUNDFLOOR_OPEN;
+        this(ElevatorStates.GROUNDFLOOR_OPEN);
+    }
+
+    public Elevator(ElevatorStates elevatorStates) {
+        current = elevatorStates;
         history.append("[");
         history.append(current);
     }
 
     public Elevator(Object startPosition) {
-        System.out.println("CSALOK!!!  itt: statemachine.elevator.Elevator(Object startPosition)");
-        current= ((Elevator)startPosition).getCurrent();
-        history.append("[");
-        history.append(current);
+        this(((Elevator) startPosition).getCurrent());
     }
 
     public ElevatorStates getCurrent() {
@@ -26,7 +27,7 @@ public class Elevator {
     }
 
     public void work() {
-        while (targets!=null && targets.size() > 0) {
+        while (targets != null && targets.size() > 0) {
             oneTask(targets.get(0));
             targets.remove(0);
         }
