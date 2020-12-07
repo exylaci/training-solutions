@@ -50,7 +50,7 @@ public class FaultList {
         }
         try {
             Double.parseDouble(isNumber.replace(',', '.'));
-        } catch (Exception e) {
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
@@ -63,7 +63,7 @@ public class FaultList {
             LocalDate.of(Integer.parseInt(split[0]),
                     Integer.parseInt(split[1]),
                     Integer.parseInt(split[2]));
-        }catch (NumberFormatException | DateTimeException nfe){
+        } catch (NumberFormatException | DateTimeException nfe) {
             return false;
         }
         return true;
