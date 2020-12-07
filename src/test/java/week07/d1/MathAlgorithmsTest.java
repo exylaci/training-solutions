@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MathAlgorithmsTest {
     @Test
     public void isPrimTest() {
+        assertTrue(new MathAlgorithms().isPrim(2));
+        assertFalse(new MathAlgorithms().isPrim(4));
         assertFalse(new MathAlgorithms().isPrim(841));
         assertTrue(new MathAlgorithms().isPrim(839));
     }

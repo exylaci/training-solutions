@@ -10,6 +10,11 @@ public class Fibonacci {
         long previous = 0;
         long beforePrevius = 1;
         for (int i = 1; i <= index; ++i) {
+            try {
+                number=Math.addExact(previous,beforePrevius);
+            }catch (ArithmeticException e){
+                throw new IllegalArgumentException("Túl sokadik elemet kéred. :(");
+            }
             number = previous + beforePrevius;
             beforePrevius = previous;
             previous = number;

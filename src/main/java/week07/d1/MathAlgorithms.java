@@ -6,7 +6,10 @@ public class MathAlgorithms {
         if (value < 1) {
             throw new IllegalArgumentException("Csak pozitív egész szám!");
         }
-        if (value % 2 == 0) {
+        if (value == 2) {
+            return true;
+        }
+        if (value % 2 == 0 || value==1 ) {
             return false;
         }
         int limit = (int) Math.sqrt(value) + 1;
