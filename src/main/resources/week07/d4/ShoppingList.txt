@@ -1,0 +1,6 @@
+Kenyér;3;400
+Tej;6;250
+Sajt;1
+Kifli;nemkell;4
+Nasi;1;50
+Rossz elválasztó,3,6
