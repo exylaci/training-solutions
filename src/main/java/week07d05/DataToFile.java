@@ -1,4 +1,4 @@
-package week07.d5;
+package week07d05;
 
 import java.nio.file.Path;
 import java.util.List;
