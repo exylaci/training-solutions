@@ -36,10 +36,9 @@ public class SaveInputTest {
     void writeLinesToFileTest() throws IOException {
         Path path = tempDirectory.resolve("testfile.txt");
         List<String> lines = List.of("1.sor", "2.sor", "3.sor");
-        DataToFile dataToFile = new DataToFile(path, lines);
 
         SaveInput s = new SaveInput();
-        s.writeLinesToFile(dataToFile);
+        s.writeLinesToFile(path, lines);
 
         String result = Files.readString(path);
         assertEquals("1.sor\r\n2.sor\r\n3.sor\r\n", result);

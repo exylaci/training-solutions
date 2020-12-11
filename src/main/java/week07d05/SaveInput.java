@@ -16,13 +16,10 @@ public class SaveInput {
 
         List<String> lines = askLines(scanner);
         Path filename = askFileNamne(scanner);
-        DataToFile dataToFile = new DataToFile(filename, lines);
-        writeLinesToFile(dataToFile);
+        writeLinesToFile(filename, lines);
     }
 
-    public void writeLinesToFile(DataToFile dataToFile) {
-        Path path = dataToFile.getFilename();
-        List<String> lines = dataToFile.getLines();
+    public void writeLinesToFile(Path path, List<String> lines) {
         try {
             Files.write(path, lines);
         } catch (IOException e) {
