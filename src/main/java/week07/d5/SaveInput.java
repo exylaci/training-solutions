@@ -14,42 +14,34 @@ import java.util.Scanner;
 public class SaveInput {
 
     public DataToFile writeToFile() {
-        List<String> lines = new ArrayList<>();
-
-        lines=askLines();
-        String filename = askFileNamne();
-
-        DataToFile dataToFile = new DataToFile(filename,lines);
+        List<String> lines  = askLines();
+        Path filename = askFileNamne();
+        DataToFile dataToFile = new DataToFile(filename, lines);
         writeToFile(dataToFile);
         return dataToFile;
     }
 
     private void writeToFile(DataToFile dataToFile) {
-        Path path = Paths.get(dataToFile.getFilename());
-        try(
-        BufferedWriter writer = Files.newBufferedWriter( path)
-        ){
-            for (String one : dataToFile.getLines() ) {
-                writer.write(one);
-                writer.newLine();
-            }
-        }catch (IOException e){
-
+        Path path = dataToFile.getFilename();
+        try {
+            Files.write(path, dataToFile.getLines());
+        }catch(IOException e){
+            throw new IllegalArgumentException(e);
         }
     }
 
-    private String askFileNamne() {
+    private Path askFileNamne() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Mi legyen a file nve: ");
         String filename = scanner.nextLine();
-        return filename;
+        return Path.of(filename);
     }
 
-    private List<String>  askLines() {
+    private List<String> askLines() {
         List<String> lines = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérek három sort!");
-        for( int i=0;i<3;++i){
+        for (int i = 0; i < 3; ++i) {
             lines.add(scanner.nextLine());
         }
         return lines;

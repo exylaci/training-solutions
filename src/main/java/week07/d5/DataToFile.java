@@ -1,12 +1,13 @@
 package week07.d5;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class DataToFile {
     private List<String> lines;
-    private String filename;
+    private Path filename;
 
-    public DataToFile(String filename, List<String> lines) {
+    public DataToFile(Path filename, List<String> lines) {
         this.lines = lines;
         this.filename = filename;
     }
@@ -15,7 +16,7 @@ public class DataToFile {
         return lines;
     }
 
-    public String getFilename() {
+    public Path getFilename() {
         return filename;
     }
 }
