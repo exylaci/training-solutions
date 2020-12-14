@@ -9,9 +9,9 @@ public class Position {
         y = 0;
     }
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(Position position) {
+        x = position.getX();
+        y = position.getY();
     }
 
     public void increaseX() {

@@ -3,14 +3,23 @@ package week08.d01;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RobotTest {
+class RobotTest {
     @Test
-    public void robotTest(){
+    void robotTest() {
         Robot r = new Robot();
 
         Position p = r.move("JJBBBFFLLLL");
-        assertEquals(-1,p.getX());
-        assertEquals(-2,p.getY());
+        assertEquals(-1, p.getX());
+        assertEquals(-2, p.getY());
+    }
+
+    @Test
+    void robotCorruptDirection() {
+        Robot r = new Robot();
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                r.move("JBFLk"));
+        assertEquals("Unknown direction!", exception.getMessage());
     }
 }
