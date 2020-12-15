@@ -1,18 +1,10 @@
 package week08.d02;
 
 public class Country {
-    private String name;
-    private int population;
-    private int colors;
-    private int neighbours;
-
-
-    public Country(Country country) {
-        name = country.getName();
-        population = country.getPopulation();
-        colors = country.getColors();
-        neighbours = country.getNeighbours();
-    }
+    private final String name;
+    private final int population;
+    private final int colors;
+    private final int neighbours;
 
     public Country(String name, int population, int colors, int neighbours) {
         this.name = name;
@@ -35,22 +27,6 @@ public class Country {
 
     public int getNeighbours() {
         return neighbours;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
-    public void setColors(int colors) {
-        this.colors = colors;
-    }
-
-    public void setNeighbours(int neighbours) {
-        this.neighbours = neighbours;
     }
 
     @Override
