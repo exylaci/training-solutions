@@ -2,11 +2,24 @@ package week08.d02;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LotteryTest {
+    @Test
+    void getNumbers2Test() {
+        List<Integer> numbers = Lottery.getNumbers(90, 5, 3);
+
+        List<Integer> sample = Arrays.asList(15, 20, 21, 38, 36);
+        System.out.println(numbers);
+        System.out.println(sample);
+        for (int i =0; i < 5; ++i) {
+            assertTrue(numbers.get(i) == sample.get(i));
+        }
+    }
+
     @Test
     void getNumbersTest() {
         List<Integer> numbers = Lottery.getNumbers();
