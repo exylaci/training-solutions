@@ -5,7 +5,6 @@ import java.util.List;
 
 public class MathAlgorithms {
 
-
     public enum Methodology {NAGYON_LASSU_MODSZER, FAVAGO_MODSZER, LAGNAGYOBB_KOZOS_OSZTO_MODSZERE, TRUKKOS, PRIMTENYEZOS_FELBONTASSAL;}
 
     public static int smallestCommonMultiple(int one, int two) {
@@ -39,7 +38,6 @@ public class MathAlgorithms {
             ++result;
         }
         return result;
-
     }
 
     private int favagoModszer(int one, int two) {
@@ -68,7 +66,6 @@ public class MathAlgorithms {
         List<Integer> primsOfOne = getPrims(one);
         List<Integer> primsOfTwo = getPrims(two);
         List<Integer> unio = getUnio(primsOfOne, primsOfTwo);
-
         return multiply(unio);
     }
 
@@ -93,7 +90,6 @@ public class MathAlgorithms {
             }
         }
         result.addAll(temp);
-
         return result;
     }
 
