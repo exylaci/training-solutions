@@ -1,4 +1,4 @@
-package week05.d3;
+package week05.d03;
 
 public class User {
     private String name;

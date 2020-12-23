@@ -1,12 +1,6 @@
-package week04;
+package week04.d01;
 
 import org.junit.jupiter.api.Test;
-import pets.GENDER;
-import pets.Pet;
-import pets.Vet;
-import stringscanner.StringScanner;
-
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,5 +18,4 @@ public class NameChangerTest {
         name.changeFirstName("Nagy");
         assertEquals("Nagy Áron",  name.getFullName() );
     }
-
 }

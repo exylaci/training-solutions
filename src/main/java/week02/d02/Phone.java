@@ -1,10 +1,10 @@
-package week02;
+package week02.d02;
 
 import java.util.Scanner;
 
 public class Phone {
     private String type;
-    private int mem ;
+    private int mem;
 
     public Phone(String type, int mem) {
         this.type = type;
@@ -37,7 +37,7 @@ public class Phone {
         int mem = scanner.nextInt();
         scanner.nextLine();
 
-        Phone phone1 = new Phone(type,mem);
+        Phone phone1 = new Phone(type, mem);
 
         System.out.println("Add meg az 2. phone adatait!");
         System.out.println("type:");
@@ -46,8 +46,12 @@ public class Phone {
         mem = scanner.nextInt();
         scanner.nextLine();
 
-        Phone phone2 = new Phone(type,mem);
+        Phone phone2 = new Phone(type, mem);
 
-
+        System.out.println(phone1.type +" "+phone1.getMem());
+        System.out.println(phone2.type +" "+phone2.getMem());
     }
 }
+//Írj egy Phone osztályt, type (String) és mem (int) attribútumokkal!
+// Generálj konstruktort, gettert és settert!
+// Írj bele egy main metódust, amivel példányosítasz egy osztályt, és kiírod az attribútumok értékeit!

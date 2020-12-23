@@ -1,7 +1,5 @@
 package controliteration.pi;
 
-import week04.CharOperations;
-
 public class PiGenerator {
     private final String VERS = "Nem a régi s durva közelítés, mi szótól szóig így kijön betűiket számlálva. " +
             "Ludolph eredménye már, ha itt végezzük húsz jegyen. De rendre kijő még tíz pontosan, Azt is bízvást ígérhetem.";

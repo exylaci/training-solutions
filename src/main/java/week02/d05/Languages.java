@@ -1,4 +1,4 @@
-package week02;
+package week02.d05;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,3 +13,8 @@ public class Languages {
         }
     }
 }
+//Hozz létre egy Languages osztályt, main metódussal!
+// Ebben hozz létre egy listát, mely karakterláncokat tartalmaz!
+// Vegyetek fel 3 elemet: Java, Python, JavaScript!
+//
+// Írd ki, az öt karakternél hosszabb programozási nyelveket!
