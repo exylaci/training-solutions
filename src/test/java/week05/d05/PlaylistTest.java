@@ -1,6 +1,5 @@
-package week05.d5;
+package week05.d05;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

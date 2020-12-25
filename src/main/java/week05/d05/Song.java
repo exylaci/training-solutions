@@ -1,4 +1,4 @@
-package week05.d5;
+package week05.d05;
 
 public class Song {
     public final static String ERROR_NAME = "Name is a must!";
