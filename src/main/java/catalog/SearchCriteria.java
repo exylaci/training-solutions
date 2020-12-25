@@ -1,7 +1,5 @@
 package catalog;
 
-import week06.d3.Series;
-
 public class SearchCriteria {
     private final String contributor;
     private final String title;
