@@ -9,24 +9,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LotteryTest {
     @Test
-    void getNumbers2Test() {
-        List<Integer> numbers = Lottery.getNumbers(90, 5, 3);
-
-        List<Integer> sample = Arrays.asList(15, 20, 21, 38, 36);
-        System.out.println(numbers);
-        System.out.println(sample);
-        for (int i =0; i < 5; ++i) {
-            assertTrue(numbers.get(i) == sample.get(i));
-        }
-    }
-
-    @Test
     void getNumbersTest() {
         List<Integer> numbers = Lottery.getNumbers();
         for (int i = 0; i < 5; ++i) {
             for (int j = i + 1; j < 5; ++j) {
                 assertFalse(numbers.get(i) == numbers.get(j));
             }
+        }
+    }
+
+    @Test
+    void getNumbers2Test() {
+        List<Integer> sample = List.of(15, 20, 21, 38, 36);
+
+        List<Integer> numbers = Lottery.getNumbers(90, 5, 3);
+        for (int i =0; i < 5; ++i) {
+            assertTrue(numbers.get(i) == sample.get(i));
         }
     }
 

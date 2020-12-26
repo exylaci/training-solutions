@@ -31,6 +31,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return String.format("%s population=%d colorsInFlag=%d numberOfNeighbours=%d",name,population,colors,neighbours);
+        return String.format("%s population=%d colorsInFlag=%d numberOfNeighbours=%d",
+                name, population, colors, neighbours);
     }
 }

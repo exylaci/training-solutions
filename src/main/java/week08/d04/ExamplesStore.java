@@ -1,7 +1,6 @@
 package week08.d04;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -63,7 +62,7 @@ public class ExamplesStore {
         }
 
         public List<String> getDescription() {
-            return description;
+            return List.copyOf(description);
         }
     }
 }

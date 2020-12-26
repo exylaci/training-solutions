@@ -5,13 +5,12 @@ import java.util.List;
 
 public class MathAlgorithms {
     public static int legnagyobbKozosOsztoPrimTenyezokkel(int one, int two) {
-        List<Integer> ones = getPrims(one);
-        List<Integer> twos = getPrims(two);
-        List<Integer> crossSection = getCrossSection(ones, twos);
+        List<Integer> primsOfOne = getPrims(one);
+        List<Integer> primsOfTwo = getPrims(two);
+        List<Integer> crossSection = getCrossSection(primsOfOne, primsOfTwo);
         int result = multiply(crossSection);
         return result;
     }
-
 
     public static int greatestCommonDivisor(int one, int two) {
         if (one < 1 || two < 1) throw new IllegalArgumentException("Only positive numbers are accepted!");
@@ -39,7 +38,9 @@ public class MathAlgorithms {
     }
 
     private static boolean isPrim(int value) {
-        for (int i = 2; i <= Math.sqrt(value); ++i) {
+        if (value == 2) return true;
+        if (value == 1 || value % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(value); i += 2) {
             if (value % i == 0) return false;
         }
         return true;
@@ -68,7 +69,9 @@ public class MathAlgorithms {
     }
 
     public static void main(String[] args) {
-        System.out.println(legnagyobbKozosOsztoPrimTenyezokkel(20,30));
-        System.out.println(legnagyobbKozosOsztoPrimTenyezokkel(504,540));
+        System.out.println(legnagyobbKozosOsztoPrimTenyezokkel(20, 30));
+        System.out.println(legnagyobbKozosOsztoPrimTenyezokkel(504, 540));
     }
 }
+//A week08d05 csomagban készíts egy osztályt MathAlgorithms néven. Legyen benne egy metódus,
+// greatestCommonDivisor(), ami paraméterül vár két pozitív egész számot és visszaadja a legnagyobb közös osztójukat.

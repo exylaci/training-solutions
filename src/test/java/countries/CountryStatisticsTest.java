@@ -23,7 +23,7 @@ public class CountryStatisticsTest {
     @Test
     public void readFromFileTest() {
         assertEquals(countryStatistics.getCountryList().size(), 0);
-        countryStatistics.readFromFile("country.txt");
+        countryStatistics.readFromFile("countries/country.txt");
 
         assertEquals(8, countryStatistics.getCountryList().size());
 
@@ -34,7 +34,7 @@ public class CountryStatisticsTest {
     @Test
     public void numberOfCountriesTest() {
         assertEquals(0, countryStatistics.numberOFCountries());
-        countryStatistics.readFromFile("country.txt");
+        countryStatistics.readFromFile("countries/country.txt");
 
         assertEquals(8, countryStatistics.numberOFCountries());
     }
@@ -42,7 +42,7 @@ public class CountryStatisticsTest {
 
     @Test
     public void mostBorderCountriesTest() {
-        countryStatistics.readFromFile("country.txt");
+        countryStatistics.readFromFile("countries/country.txt");
 
         assertEquals("Germany", countryStatistics.mostBorderCountries().getName());
         assertEquals(8, countryStatistics.mostBorderCountries().getBorderCountries());

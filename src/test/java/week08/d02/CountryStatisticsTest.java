@@ -10,7 +10,7 @@ public class CountryStatisticsTest {
     @Test
     void countryStatisticsTest() {
         CountryStatistics cs = new CountryStatistics();
-        cs.importCountries("countries.txt");
+        cs.importCountries("src/main/resources/countries.txt");
         assertEquals(11, cs.getCountries().size());
 
     }
@@ -34,7 +34,7 @@ public class CountryStatisticsTest {
     @Test
     void countryStatisticsCountryModificationTest() {
         CountryStatistics cs = new CountryStatistics();
-        cs.importCountries("countries.txt");
+        cs.importCountries("src/main/resources/countries.txt");
 
         Exception exception = assertThrows(UnsupportedOperationException.class, () ->
                 cs.getCountries().set(0, new Country("temp", 1, 1, 1)));

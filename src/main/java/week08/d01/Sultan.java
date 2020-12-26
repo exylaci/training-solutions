@@ -6,7 +6,7 @@ public class Sultan {
     public static final int NUMBER_OF_DAIS_AND_CELLS = 100;
     private Door[] doors = new Door[NUMBER_OF_DAIS_AND_CELLS];
 
-    public Door[] onThe100thDais() {
+    public Door[] openDoors() {
         initialising();
         for (int i = 0; i < NUMBER_OF_DAIS_AND_CELLS; ++i) {
             for (int j = i; j < NUMBER_OF_DAIS_AND_CELLS; j += i + 1) {
@@ -36,7 +36,7 @@ public class Sultan {
 
     public static void main(String[] args) {
         Sultan c = new Sultan();
-        Door[] d = c.onThe100thDais();
+        Door[] d = c.openDoors();
         for (int i = 0; i < NUMBER_OF_DAIS_AND_CELLS; ++i) {
             if (d[i] == Door.OPEN)
                 System.out.println(i + 1 + " " + d[i]);
@@ -50,5 +50,6 @@ public class Sultan {
 // (Ekkor minden cella nyitva lesz)
 // A második napon minden másodikon fordítsanak egyet, így minden második zárva lesz.
 // A harmadik napon minden harmadikon fordítsanak egyet így a 3. cella zárva , de a 6. cella például nyitva lesz.
-// A week08d01.Sultan osztályba írj egy metódust openDoors() néven,
+//
+// A Sultan osztályba írj egy metódust openDoors() néven,
 // aminek visszatérési értékéből kiderül, hogy mely ajtók lesznek nyitva a 100. napon! Az osztály szabadon bővíthető!

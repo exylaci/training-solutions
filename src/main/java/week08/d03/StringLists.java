@@ -25,15 +25,29 @@ public class StringLists {
     public static List<String> stringListsUnion(List<String> first, List<String> second) {
         if (first == null || second == null) return null;
 
-        List<String> union = new ArrayList<>();
+        List<String> result = new ArrayList<>(first);
 
-        for (String one : first) {
-            if (second.contains(one) && !union.contains(one)) {
-                union.add(one);
+        for (String one : second) {
+            if (!result.contains(one)) {
+                result.add(one);
             }
         }
 
-        return union;
+        return result;
+    }
+
+    public static List<String> stringListsCrossSection(List<String> first, List<String> second) {
+        if (first == null || second == null) return null;
+
+        List<String> result = new ArrayList<>();
+
+        for (String one : first) {
+            if (second.contains(one) && !result.contains(one)) {
+                result.add(one);
+            }
+        }
+
+        return result;
     }
 }
 //Készíts a week08d03 csomagban egy StringLists osztályt és benne egy
@@ -41,3 +55,8 @@ public class StringLists {
 // String listát és a legrövidebb szavakat vissza adja belőle egy Listában.
 // PL :{"aaa", "aa", "bb", "cccc", "dd"} Itt a
 // legrövidebb szavak az "aa", "bb", "cc".
+
+//Készíts week08d03 csomagban egy StringLists osztályt és benne egy
+// stringListsUnion(List<String> first, List<String> second) metódust,
+// mely két string listát vár paraméterül és visszaadja az uniójukat.
+// Az úniónak minden elemet tartalmaznia kell mindkét listából, de egy elem nem szerepelhet kétszer!

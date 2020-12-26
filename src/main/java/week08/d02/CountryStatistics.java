@@ -3,6 +3,8 @@ package week08.d02;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +14,15 @@ public class CountryStatistics {
     private List<Country> countries = new ArrayList<>();
 
     public void importCountries(String fileName) {
-        countries.clear();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    CountryStatistics.class.getResourceAsStream(fileName)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(Path.of(fileName))));
+
+            countries.clear();
             String oneLine;
             while ((oneLine = reader.readLine()) != null) {
                 processOneLine(oneLine);
             }
+
         } catch (NullPointerException | IOException e) {
             throw new IllegalStateException("Can't read from file!", e);
         }
@@ -28,6 +31,7 @@ public class CountryStatistics {
     public Country maxPopulaton() {
         Country result = null;
         int max = -1;
+
         for (Country one : countries) {
             if (one.getPopulation() > max) {
                 result = one;
@@ -53,7 +57,7 @@ public class CountryStatistics {
     }
 
     public List<Country> getCountries() {
-        return   List.copyOf(countries);
+        return List.copyOf(countries);
     }
 }
 //Adott a countries.txt állomány, melyet helyezz el a projekt gyökérkönyvtárába.
