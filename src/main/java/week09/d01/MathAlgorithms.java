@@ -1,11 +1,13 @@
-package week09.d02;
+package week09.d01;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MathAlgorithms {
 
-    public enum Methodology {NAGYON_LASSU_MODSZER, FAVAGO_MODSZER, LAGNAGYOBB_KOZOS_OSZTO_MODSZERE, TRUKKOS, PRIMTENYEZOS_FELBONTASSAL;}
+    public enum Methodology {
+        NAGYON_LASSU_MODSZER, FAVAGO_MODSZER, LAGNAGYOBB_KOZOS_OSZTO_MODSZERE, TRUKKOS, PRIMTENYEZOS_FELBONTASSAL;
+    }
 
     public static int smallestCommonMultiple(int one, int two) {
         return smallestCommonMultiple(one, two, Methodology.PRIMTENYEZOS_FELBONTASSAL);
@@ -29,7 +31,7 @@ public class MathAlgorithms {
             case PRIMTENYEZOS_FELBONTASSAL:
                 return m.primtenyezosFelbontassal(one, two);
         }
-        return 0;
+        throw new IllegalArgumentException("Unknown methodology!");
     }
 
     private int nagyonLassuModszer(int one, int two) {
@@ -52,10 +54,11 @@ public class MathAlgorithms {
     }
 
     private int getgreatestCommonDivisor(int one, int two) {
-        if (Math.max(one, two) % Math.min(one, two) == 0) {
+        int modulo = Math.max(one, two) % Math.min(one, two);
+        if (modulo == 0) {
             return Math.min(one, two);
         }
-        return getgreatestCommonDivisor(Math.max(one, two) % Math.min(one, two), Math.max(one, two));
+        return getgreatestCommonDivisor(modulo, Math.min(one, two));
     }
 
     private int trukkosen(int one, int two) {
@@ -107,10 +110,12 @@ public class MathAlgorithms {
     }
 
     private boolean isPrim(int value) {
-        for (int i = 2; i <= Math.sqrt(value); ++i) {
+        if (value == 2) return true;
+        if (value == 1 || value % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(value); i += 2) {
             if (value % i == 0) return false;
         }
         return true;
     }
 }
-// A legkisebb közös osztó megkeresése 5 féle módon.
+// A legkisebb közös többszörös megkeresése 5 féle módon.

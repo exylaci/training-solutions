@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class SantaClaus {
-    private List<Person> people = new ArrayList<>();
+    private List<Person> people;
 
     public SantaClaus(List<Person> people) {
         if (people == null) throw new IllegalArgumentException("List cannot be empty!");

@@ -16,6 +16,19 @@ public class PersonTest {
     }
 
     @Test
+    void setPresentTest() {
+        Random random = new Random(4500);
+
+        Person person = new Person("name", 14);
+        person.setPresent(random);
+        assertEquals(Present.TOY, person.getPresent());
+
+        person = new Person("name", 15);
+        person.setPresent(random);
+        assertEquals(Present.HOUSEKEEPING, person.getPresent());
+    }
+
+    @Test
     void contructorConditionsTest() {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new Person("name", 0));
@@ -28,19 +41,5 @@ public class PersonTest {
         exception = assertThrows(IllegalArgumentException.class, () ->
                 new Person(" ", 16));
         assertEquals("Name cannot be empty!", exception.getMessage());
-
-    }
-
-    @Test
-    void setPresentTest() {
-        Random random = new Random(4500);
-
-        Person person = new Person("name", 14);
-        person.setPresent(random);
-        assertEquals(Present.TOY, person.getPresent());
-
-        person = new Person("name", 15);
-        person.setPresent(random);
-        assertEquals(Present.HOUSEKEEPING, person.getPresent());
     }
 }

@@ -13,6 +13,7 @@ public class MatrixReader {
     public void createMatrix(String pathString) {
         Path path = Path.of("src/main/resources/bytematrix");
         try {
+            if (Files.exists(path)) return;
             Files.createDirectories(path);
             OutputStream writer = new BufferedOutputStream(Files.newOutputStream(path.resolve(pathString)));
             for (int i = 0; i < 8974; ++i) {
