@@ -3,18 +3,57 @@ package collectionsarraylist;
 import java.util.*;
 
 public class Lottery {
+//    public List<Integer> selectWinningNumbers(int lotteryType, int ballCount) {
+//        if (lotteryType >= ballCount)
+//            throw new IllegalArgumentException("Balls must be more then the winning numbers!");
+//
+//        Set<Integer> result = new HashSet<Integer>(lotteryType);
+//        Random rnd = new Random();
+//        while(result.size()<lotteryType){
+//            int next = rnd.nextInt(ballCount)+1;
+//            result.add(next);
+//        }
+//
+//        return List.copyOf(result);
+//    }
+
     public List<Integer> selectWinningNumbers(int lotteryType, int ballCount) {
         if (lotteryType >= ballCount)
             throw new IllegalArgumentException("Balls must be more then the winning numbers!");
 
-        Set<Integer> result = new HashSet<Integer>(lotteryType);
-        Random rnd = new Random();
-        while(result.size()<lotteryType){
-            int next = rnd.nextInt(ballCount)+1;
-            result.add(next);
-        }
+        List<Integer> balls = createBalls(ballCount);
+        shuffle(balls);
+        List<Integer> result = drawing(balls, lotteryType);
+        sort(result);
 
         return List.copyOf(result);
+    }
+
+    private List<Integer> sort(List<Integer> drivenBalls) {
+        Collections.sort(drivenBalls);
+        return drivenBalls;
+    }
+
+    private List<Integer> drawing(List<Integer> balls, int lotteryType) {
+        List<Integer> result = new ArrayList<>(lotteryType);
+        for (int i = 0; i < lotteryType; ++i) {
+            result.add(balls.get(i));
+        }
+        return result;
+    }
+
+    private List<Integer> shuffle(List<Integer> balls) {
+        Collections.shuffle(balls);
+        return balls;
+    }
+
+    private List<Integer> createBalls(int lotteryType) {
+        List<Integer> result = new ArrayList<>(lotteryType);
+        int i = 0;
+        while (i < lotteryType) {
+            result.add(++i);
+        }
+        return result;
     }
 }
 //Implementálj egy lottó gépet, ahol megadható a lottó típusa (ötös, hatos, stb.)
