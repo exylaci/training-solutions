@@ -1,5 +1,7 @@
 package searching;
 
+import java.util.Arrays;
+
 public class BookArraySearch {
     private Book[] bookArray;
 
@@ -11,11 +13,9 @@ public class BookArraySearch {
     public Book findBookByAuthorTitle(String author, String title) {
         check(author);
         check(title);
-        Book findIt = new Book(0, author, title);
-        for (Book one : bookArray) {
-            if (findIt.equals(one)) {
-                return one;
-            }
+        int index = Arrays.binarySearch(bookArray, new Book(0, author, title));
+        if (index >= 0) {
+            return bookArray[index];
         }
         throw new IllegalArgumentException("No book found by " + author + " with title " + title);
     }
