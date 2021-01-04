@@ -1,7 +1,6 @@
 package lambdaintro;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
 import java.util.Arrays;
@@ -16,17 +15,28 @@ public class FamilyBirthdays {
     }
 
     public boolean isFamilyBirthday(TemporalAccessor date) {
-      for (LocalDate one : dates){
-//          if ( one.getMonth()==5){
-//              return true;
-//          }
-      }
-      return   false;
+        for (LocalDate one : dates) {
+            if (one.getMonthValue() == date.get(ChronoField.MONTH_OF_YEAR) &&
+                    one.getDayOfMonth() == date.get(ChronoField.DAY_OF_MONTH)) {
+                return true;
+            }
+        }
+        return false;
 
     }
 
-    public int nextFamilyBirthDay(TemporalAccessor  date) {
-        return -1;
+    public int nextFamilyBirthDay(TemporalAccessor date) {
+        int result = Integer.MAX_VALUE;
+        int daisOfDate = LocalDate.of(
+                date.get(ChronoField.YEAR),
+                date.get(ChronoField.MONTH_OF_YEAR),
+                date.get(ChronoField.DAY_OF_MONTH)).getDayOfYear();
+        for (LocalDate one : dates) {
+            int different = (LocalDate.of(date.get(ChronoField.YEAR), one.getMonthValue(), one.getDayOfMonth())
+                    .getDayOfYear() - daisOfDate + 365) % 365;
+            result = Math.min(result, different);
+        }
+        return result;
     }
 }
 //Írj egy FamilyBirthdays osztályt, mely konstruktor paraméterül kap születésnapokat.

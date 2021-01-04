@@ -36,5 +36,4 @@ public class FamilyBirthdaysTest {
         assertEquals(176, LocalDate.of(2017, 11, 10).query(familyBirthdays::nextFamilyBirthDay));
     }
 
-
 }
