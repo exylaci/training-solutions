@@ -10,10 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Eutazas {
     public static final String SEPARATOR = " ";
@@ -106,6 +103,19 @@ public class Eutazas {
 
     public MaxPassanger feladat4() {
         System.out.println(" 4. feladat");
+
+//        Map<Integer, Integer> passangersAtStops = new TreeMap<>();
+//        for (PassangerData one : passangerData) {
+//            Integer key = one.getStop();
+//            if (passangersAtStops.containsKey(key)) {
+//                passangersAtStops.replace(key, passangersAtStops.get(key) + 1);
+//            } else {
+//                passangersAtStops.putIfAbsent(key, 1);
+//            }
+//
+//        }
+//        int maximumPassangersNumberAtOneStop = Collections.max(passangersAtStops.values());
+//      Így nem tudom melyik megállóban volt. Csak azt tudom, hogy hány fő. :(
 
         int[] stops = pasangerCounting();
         MaxPassanger result = maximumFinding(stops);

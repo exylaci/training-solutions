@@ -1,7 +1,6 @@
 package erettsegi2019;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -16,21 +15,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EutazasTest {
 
-    Eutazas eutazas = new Eutazas();
+    static Eutazas eutazas = new Eutazas();
 
-//    @BeforeAll
-//    void beforeAll(){
+    @BeforeAll
+    static void beforeAll() {
+        EutazasTest.eutazas.feladat1();
+    }
+
+//    @BeforeEach
+//    void beforeEach() {
 //        eutazas.feladat1();
 //    }
 
-    @BeforeEach
-    void beforeEach() {
-        eutazas.feladat1();
-    }
-
     @Test
     void feladat1Test() {
-        List<PassangerData> result = eutazas.feladat1();
+        Eutazas e = new Eutazas();
+        List<PassangerData> result = e.feladat1();
         PassangerData sample = new PassangerData(29,
                 LocalDateTime.of(2019, 3, 26, 7, 36),
                 "8417751",
@@ -78,7 +78,7 @@ class EutazasTest {
         eutazas.feladat7(tempDirectory);
 
         assertTrue(Files.exists(tempDirectory.resolve("figyelmeztetes.txt")));
-        assertTrue(Files.size(tempDirectory.resolve("figyelmeztetes.txt"))>=48*19);
-        assertTrue(Files.size(tempDirectory.resolve("figyelmeztetes.txt"))<=48*20+1);
+        assertTrue(Files.size(tempDirectory.resolve("figyelmeztetes.txt")) >= 48 * 19);
+        assertTrue(Files.size(tempDirectory.resolve("figyelmeztetes.txt")) <= 48 * 20 + 1);
     }
 }
