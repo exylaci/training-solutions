@@ -8,6 +8,7 @@ public class Calculator {
     public MinMax findMinMaxSum(int[] input) {
         if (input == null) return new MinMax();
 
+
         List<Integer> numbers = new ArrayList<>();
         for (Integer one : input) {
             numbers.add(one);
@@ -28,6 +29,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
 
         do {
+
             try {
                 inputNumbers.add(scanner.nextInt());
             } catch (InputMismatchException e) {
@@ -38,8 +40,8 @@ public class Calculator {
 
         System.out.println(inputNumbers);
         int[] numbers = new int[inputNumbers.size()];
-        for(int i = 0; i<inputNumbers.size();++i){
-            numbers[i]=inputNumbers.get(i);
+        for (int i = 0; i < inputNumbers.size(); ++i) {
+            numbers[i] = inputNumbers.get(i);
         }
 
         Calculator c = new Calculator();
