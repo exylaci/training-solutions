@@ -1,6 +1,29 @@
 package week11.d03;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CharCounter {
+    public int countCharsWithSet(String[] strings) {
+        if (strings == null || strings.length < 2) return 0;
+
+        Set<Character> temp = convertToSet(strings[0]);
+        for (int index = 1; index < strings.length; ++index) {
+            temp.retainAll(convertToSet(strings[index]));
+        }
+        return temp.size();
+    }
+
+    private Set<Character> convertToSet(String source) {
+        Set<Character> result = new HashSet<>();
+        if (source != null) {
+            for (char c : source.toCharArray()) {
+                result.add(c);
+            }
+        }
+        return result;
+    }
+
     public int countChars(String[] strings) {
         if (strings == null || strings.length < 2 || strings[0] == null) return 0;
 
