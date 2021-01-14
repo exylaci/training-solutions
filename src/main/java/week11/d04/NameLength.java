@@ -6,11 +6,11 @@ public class NameLength {
     public static final String FIRST_LETTER = "J";
 
     public List<Integer> getLengths(List<String> strings) {
-        Set<Integer> length = new TreeSet<>();
+        Set<Integer> length = new HashSet<>();
         if (strings != null) {
 
             for (String oneString : strings) {
-                if (oneString != null && oneString.startsWith(FIRST_LETTER)) {
+                if (oneString != null && oneString.toUpperCase().startsWith(FIRST_LETTER)) {
                     length.add(oneString.length());
                 }
             }

@@ -2,9 +2,7 @@ package week11.d04;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,9 +22,17 @@ class NameLengthTest {
     void getLengthsNormalTest() {
         NameLength n = new NameLength();
         List<Integer> result = n.getLengths(List.of("Jack", "Joe", "Jane", "Jake", "George", "William"));
+        Collections.sort(result);
 
-        assertEquals(2, result.size());
-        assertEquals(3, result.get(0));
-        assertEquals(4, result.get(1));
+        assertEquals(Arrays.asList(3, 4), result);
+    }
+
+    @Test
+    void getLengthsLowercaseTest() {
+        NameLength n = new NameLength();
+        List<Integer> result = n.getLengths(List.of("jack", "joe", "jane", "jake", "George", "William"));
+        Collections.sort(result);
+
+        assertEquals(Arrays.asList(3, 4), result);
     }
 }
