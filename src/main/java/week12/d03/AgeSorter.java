@@ -12,7 +12,6 @@ public class AgeSorter {
             for (int age : ages){
                 if(age==i){
                     sorted.add(i);
-                    break;
                 }
             }
         }
