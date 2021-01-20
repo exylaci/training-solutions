@@ -1,0 +1,17 @@
+Számok, amiket be kellene olvasni
+1,1,4
+2,3,5
+2,2,5
+Üres sor:
+
+Különböző hosszúságú sorok:
+645,744,322,21
+4
+56,3
+Vessző után nincs szám:
+,
+Negatív szám:
+-34,-67
+0,-1
+-3,5
+
