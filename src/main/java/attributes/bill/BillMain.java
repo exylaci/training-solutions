@@ -1,7 +1,5 @@
 package attributes.bill;
 
-import classsctructureintegrate.Bank;
-
 public class BillMain {
     public static void main(String[] args) {
         Bill bills = new Bill();

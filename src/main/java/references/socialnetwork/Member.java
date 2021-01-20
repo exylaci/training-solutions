@@ -1,7 +1,5 @@
 package references.socialnetwork;
 
-import records.SchoolRecordsController;
-
 import java.util.ArrayList;
 import java.util.List;
 
