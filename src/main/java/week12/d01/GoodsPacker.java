@@ -8,9 +8,7 @@ public class GoodsPacker {
     public int packGoods(int[][] types, int capacity) {
         if (types == null) return 0;
 
-        List<Type> typeList = Arrays.stream(types).map((a) -> new Type(a[0], a[1])).
-                collect(Collectors.toCollection(ArrayList::new));
-        typeList.sort(Comparator.naturalOrder());
+        List<Type> typeList = Arrays.stream(types).map(a -> new Type(a[0], a[1])).sorted().collect(Collectors.toList());
         int result = 0;
         for (Type type : typeList) {
             while (capacity - type.getWeight() >= 0) {
