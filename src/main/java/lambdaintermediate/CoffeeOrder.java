@@ -17,7 +17,7 @@ public class CoffeeOrder {
         return coffeeList;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDateTime getDateTime() {
         return date;
     }
 }
