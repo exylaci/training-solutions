@@ -11,6 +11,8 @@ public class Employee {
     public Employee(String name, int skillLevel) {
         this.name = name;
         this.skillLevel = skillLevel;
+        skills = List.of("programming","skiing");
+
     }
 
     public Employee(int age, int skillLevel, String name, List<String> skills) {

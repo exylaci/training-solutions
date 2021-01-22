@@ -11,6 +11,7 @@ public class EmployeeFilter {
                 .stream()
                 .filter(employee -> employee != null)
                 .filter(employee -> employee.getSkillLevel() >= 3)
+                .filter(employee->employee.getSkills().stream().filter(skill->skill.equals("programming")).count()>0)
                 .collect(Collectors.toList());
     }
 }
