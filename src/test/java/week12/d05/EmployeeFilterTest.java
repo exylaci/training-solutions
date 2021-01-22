@@ -15,18 +15,25 @@ class EmployeeFilterTest {
         EmployeeFilter e = new EmployeeFilter();
 
         assertEquals(2, e.countSeniorDevs(List.of(
-                new Employee("Józsi", 0),
-                new Employee("Éva", 1),
-                new Employee("Sanyi", 2),
-                new Employee("Dezső", 3),
-                new Employee("Én :)", 4))).size());
+                new Employee(0, List.of("programming", "skiing")),
+                new Employee(1, List.of("programming", "skiing")),
+                new Employee(2, List.of("programming", "skiing")),
+                new Employee(3, List.of("programming", "skiing")),
+                new Employee(4, List.of("programming", "skiing")))).size());
     }
 
     @Test
     void countSeniorDevsTest2() {
         EmployeeFilter e = new EmployeeFilter();
 
-        assertEquals(Collections.emptyList(), e.countSeniorDevs(List.of(new Employee("Józsi", 0))));
+        assertEquals(Collections.emptyList(), e.countSeniorDevs(List.of(new Employee(2, List.of("programming", "skiing")))));
+    }
+
+    @Test
+    void countSeniorDevsTest3() {
+        EmployeeFilter e = new EmployeeFilter();
+
+        assertEquals(Collections.emptyList(), e.countSeniorDevs(List.of(new Employee(4, List.of("skiing")))));
     }
 
     @Test
@@ -37,12 +44,28 @@ class EmployeeFilterTest {
     }
 
     @Test
-    void countSeniorDevsTestNullInList() {
+    void countSeniorDevsTestNullInList1() {
         EmployeeFilter e = new EmployeeFilter();
 
         List<Employee> temp = new ArrayList<>();
         temp.add(null);
         assertEquals(Collections.emptyList(), e.countSeniorDevs(temp));
+    }
+
+    @Test
+    void countSeniorDevsTestNullInList2() {
+        List<String> temp = new ArrayList<>();
+        temp.add(null);
+        temp.add("programming");
+
+        EmployeeFilter e = new EmployeeFilter();
+
+        assertEquals(2, e.countSeniorDevs(List.of(
+                new Employee(0, temp),
+                new Employee(1, temp),
+                new Employee(2, temp),
+                new Employee(3, temp),
+                new Employee(4, temp))).size());
     }
 
     @Test

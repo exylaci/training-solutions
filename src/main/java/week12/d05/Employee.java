@@ -8,11 +8,9 @@ public class Employee {
     private String name;
     private List<String> skills;
 
-    public Employee(String name, int skillLevel) {
-        this.name = name;
+    public Employee(int skillLevel, List<String> skills) {
         this.skillLevel = skillLevel;
-        skills = List.of("programming","skiing");
-
+        this.skills = skills;
     }
 
     public Employee(int age, int skillLevel, String name, List<String> skills) {

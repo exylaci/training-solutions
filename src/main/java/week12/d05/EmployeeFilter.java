@@ -9,9 +9,12 @@ public class EmployeeFilter {
         if (employees == null) throw new IllegalArgumentException("Employee list is a must!");
         return employees
                 .stream()
-                .filter(employee -> employee != null)
+                .filter(employee -> employee != null && employee.getSkills() != null)
                 .filter(employee -> employee.getSkillLevel() >= 3)
-                .filter(employee->employee.getSkills().stream().filter(skill->skill.equals("programming")).count()>0)
+                .filter(employee -> employee.getSkills()
+                        .stream()
+                        .filter(skill -> skill != null)
+                        .anyMatch(skill -> skill.equals("programming")))
                 .collect(Collectors.toList());
     }
 }
