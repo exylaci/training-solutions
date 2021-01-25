@@ -47,63 +47,27 @@ public class Company {
         long total = summary.values().stream().mapToLong(value -> value).sum();
 
         try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(report))) {
-
-            writer.printf("%s\t%d-%02d\t%d\n", fullname, year, month, total);
-            for (Project project : projects) {
-                if (summary.containsKey(project)) {
-                    writer.printf("%s\t%d\n", project, summary.get(project));
-                }
-            }
-
+            writeToFile(writer, new DataPackedIntoAClass(fullname, year, month, total, summary));
         } catch (IOException e) {
             throw new IllegalStateException("Can't write to " + report);
         }
     }
 
-
-    //Ebben a verzióban nincs 3 mélység, de szerintem sokkal kevésbé olvasható és rosszabb az átadott 4 paraméter miatt is.
-    public void printToFileVersion2(String fullname, int year, int month, Path report) {
-        Map<Project, Long> summary = summarizing(fullname, year, month);
-        long total = summary.values().stream().mapToLong(value -> value).sum();
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(report))) {
-            writer.printf("%s\t%d-%02d\t%d\n", fullname, year, month, total);
-            for (Project project : projects) {
-                printToFileTheSpendingTimeOfOneProject(summary, writer, project, report);
+    private void writeToFile(PrintWriter writer, DataPackedIntoAClass dataPackedIntoAClass) throws IOException {
+        writer.printf("%s\t%d-%02d\t%d\n",
+                dataPackedIntoAClass.getFullname(),
+                dataPackedIntoAClass.getYear(),
+                dataPackedIntoAClass.getMonth(),
+                dataPackedIntoAClass.getTotal());
+        for (
+                Project project : projects) {
+            if (dataPackedIntoAClass.getSummary().containsKey(project)) {
+                writer.printf("%s\t%d\n",
+                        project,
+                        dataPackedIntoAClass.getSummary().get(project));
             }
-        } catch (IOException e) {
-            throw new IllegalStateException("Can't write to " + report);
         }
     }
-
-    //Ez csak a Verzio2 esetén kell, ebbe szerveztem ki a 3 mélységet.
-    private void printToFileTheSpendingTimeOfOneProject(Map<Project, Long> summary, PrintWriter writer, Project project, Path report) {
-        try {
-            if (summary.containsKey(project)) {
-                writer.printf("%s\t%d\n", project, summary.get(project));
-            }
-        } catch (Exception e) {
-            throw new IllegalStateException("Can't write to " + report);
-        }
-    }
-
-    //Ebben a verzióban nincs 3 mélység, de szerintem sokkal költségesebb és bonyolultabb az algoritmus a projekt és a summary metszetének létrehozása miatt.
-    public void printToFileVersion3(String fullname, int year, int month, Path report) {
-        Map<Project, Long> summary = summarizing(fullname, year, month);
-        long total = summary.values().stream().mapToLong(value -> value).sum();
-
-        List<Project> commonPart = new ArrayList<>(projects);
-        commonPart.retainAll(summary.keySet());
-
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(report))) {
-            writer.printf("%s\t%d-%02d\t%d\n", fullname, year, month, total);
-            for (Project project : commonPart) {
-                writer.printf("%s\t%d\n", project, summary.get(project));
-            }
-        } catch (IOException e) {
-            throw new IllegalStateException("Can't write to " + report);
-        }
-    }
-
 
     private Map<Project, Long> summarizing(String fullname, int year, int month) {
         checkEmployee(fullname);
