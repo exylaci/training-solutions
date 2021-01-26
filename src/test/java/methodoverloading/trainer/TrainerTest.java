@@ -1,4 +1,4 @@
-package methoverloading.trainer;
+package methodoverloading.trainer;
 
 import org.junit.jupiter.api.Test;
 

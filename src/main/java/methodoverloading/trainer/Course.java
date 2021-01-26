@@ -1,4 +1,4 @@
-package methoverloading.trainer;
+package methodoverloading.trainer;
 
 public class Course {
     private String name;

@@ -1,6 +1,6 @@
-package methoverloading.pub;
+package methodoverloading.pub;
 
-import methoverloading.time.Time;
+import methodoverloading.time.Time;
 
 public class Pub {
     private String name;
