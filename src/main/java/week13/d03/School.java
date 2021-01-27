@@ -15,23 +15,23 @@ public class School {
         return schedule;
     }
 
-    public void loadSchedule(Path path) {
+    public void loadScheduleFromFile(Path path) {
         if (path == null) throw new IllegalArgumentException("Path is a must!");
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String teacherName;
-            String subjectName;
-            String className;
-            String hours;
-            while ((teacherName = reader.readLine()) != null &&
-                    (subjectName = reader.readLine()) != null &&
-                    (className = reader.readLine()) != null &&
-                    (hours = reader.readLine()) != null) {
-                schedule.add(new Lesson(teacherName, subjectName, className, hours));
-            }
-
+            loadSchedule(reader);
         } catch (IOException e) {
             throw new IllegalStateException("Can't read from: " + path);
+        }
+    }
+
+    private void loadSchedule(BufferedReader reader) throws IOException {
+        String[] lines = new String[4];
+        for (int i = 0; (lines[i] = reader.readLine()) != null; ++i) {
+            if (i == 3) {
+                schedule.add(new Lesson(lines));
+                i = -1;
+            }
         }
     }
 

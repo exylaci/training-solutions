@@ -11,7 +11,7 @@ class SchoolTest {
     @Test
     void loadScheduleTest() {
         School s = new School();
-        s.loadSchedule(Path.of("src/main/resources/week13/d03/beosztas.txt"));
+        s.loadScheduleFromFile(Path.of("src/main/resources/week13/d03/beosztas.txt"));
 
         assertEquals(329, s.getSchedule().size());
     }
@@ -19,7 +19,7 @@ class SchoolTest {
     @Test
     void summarisingTheWorkedHours() {
         School s = new School();
-        s.loadSchedule(Path.of("src/main/resources/week13/d03/beosztas.txt"));
+        s.loadScheduleFromFile(Path.of("src/main/resources/week13/d03/beosztas.txt"));
 
         assertEquals(24, s.summarisingTheWorkedHours("Albatrosz Aladin"));
     }
