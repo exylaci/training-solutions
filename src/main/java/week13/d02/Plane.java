@@ -1,12 +1,11 @@
 package week13.d02;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Plane {
     public static final String SEPARATOR = ":";
-    public static final DateTimeFormatter PATTERN = DateTimeFormatter.ofPattern("HH:mm");
+    public static final DateTimeFormatter PATTERN = DateTimeFormatter.ofPattern("H:m");
 
     private String ID;
     private Direction direction;
@@ -24,9 +23,7 @@ public class Plane {
         this.ID = ID;
         this.direction = Direction.valueOf(direction.toUpperCase());
         this.city = city;
-        String[] parts = time.split(SEPARATOR);
-        this.time = LocalTime.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-//        this.time = LocalDateTime.parse(time, DateTimeFormatter.ofPattern("HH:mm")).toLocalTime();
+        this.time = LocalTime.parse(time, PATTERN);
     }
 
     public String getID() {
