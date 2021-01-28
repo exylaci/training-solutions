@@ -1,0 +1,7 @@
+Kedves {nev}!
+
+Megküldjük önnek a következő esedékes számláját {datum} dátummal, melynek összege: {osszeg} Ft!
+A fizetési határidő {hatarido}.
+
+Üdvözlettel,
+Ügyfélszolgálat
