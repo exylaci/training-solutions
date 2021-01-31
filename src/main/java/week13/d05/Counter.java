@@ -8,8 +8,9 @@ public class Counter {
         if (text == null) return 0;
 
         Set<Character> characters = new HashSet<>();
+        String source = text.toUpperCase();
         for (int i = 0; i < text.length(); ++i) {
-            char c = text.toUpperCase().charAt(i);
+            char c = source.charAt(i);
             if (c > '@' && c <= 'Z') {
                 characters.add(c);
             }
