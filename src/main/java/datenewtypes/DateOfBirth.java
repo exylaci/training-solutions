@@ -2,15 +2,23 @@ package datenewtypes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.format.TextStyle;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 public class DateOfBirth {
+    public static final Locale LOCALE = new Locale("hu", "HU");
+
     private LocalDate birthDay;
 
+    public DateOfBirth(String date) {
+        this(date, "yyyy.MM.dd");
+    }
+
     public DateOfBirth(String date, String pattern) {
-        this(date, pattern, new Locale("hu", "HU"));
+        this(date, pattern, LOCALE);
     }
 
     public DateOfBirth(String date, String pattern, Locale locale) {
@@ -29,6 +37,21 @@ public class DateOfBirth {
         if (pattern == null || pattern.isBlank())
             throw new IllegalArgumentException("Empty pattern string, cannot use: ");
         return birthDay.format(DateTimeFormatter.ofPattern(pattern));
+    }
+
+    public String findDayOfWeek() {
+        return birthDay.getDayOfWeek().name();
+    }
+    public boolean isWeekDay() {
+        return birthDay.getDayOfWeek().getValue() < 6;
+    }
+
+    public boolean wasItALeapYear() {
+       return birthDay.isLeapYear();
+    }
+
+    public String findBirthDayOfWeekLater(int year){
+        return birthDay.withYear(year).getDayOfWeek().name();
     }
 
     public String findDayOfWeekForBirthDate(Locale locale) {
