@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Shop {
@@ -58,13 +59,15 @@ public class Shop {
                 .mapToInt(a -> a).sum();
     }
 
-    public List<Item> getOrderedOneShoppinglist(String customer, String shoppingId) {       // 3. feladat
+    public List<Item> getOrderedOneShoppinglist(String customer, String shoppingId, Function<Item, String> base) {
+        if (base == null) return Collections.emptyList();                   // 3. feladat
+
         return shoppings
                 .entrySet()
                 .stream()
                 .filter(shopping -> shopping.getKey().equals(customer + "-" + shoppingId))
                 .flatMap(shopping -> shopping.getValue().stream())
-                .sorted(Comparator.comparing(Item::getProduct))
+                .sorted(Comparator.comparing(base))
                 .collect(Collectors.toList());
     }
 

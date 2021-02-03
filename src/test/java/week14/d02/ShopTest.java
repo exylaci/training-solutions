@@ -57,11 +57,18 @@ class ShopTest {
     }
 
     @Test
-    void getOrderedOneShoppinglistTest() {
-        assertEquals(Collections.emptyList(), s.getOrderedOneShoppinglist(null, null));
+    void getOrderedOneShoppinglistOrderByNameTest() {
+        assertEquals(Collections.emptyList(), s.getOrderedOneShoppinglist(null, null,null));
 
-        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120");
+        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120",Item::getProduct);
         assertEquals(7, result.size());
         assertEquals("fish", result.get(2).getProduct());
+    }
+
+    @Test
+    void getOrderedOneShoppinglistOrderByPriceTest() {
+//        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120",Item::getPrice);
+//        assertEquals(7, result.size());
+//        assertEquals("potato", result.get(2).getProduct());
     }
 }
