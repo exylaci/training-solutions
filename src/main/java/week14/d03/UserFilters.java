@@ -1,9 +1,7 @@
-package week14.d04;
+package week14.d03;
 
-import javax.print.attribute.standard.OrientationRequested;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
