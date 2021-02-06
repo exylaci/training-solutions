@@ -10,7 +10,7 @@ class WordCounterTest {
 
     @Test
     void countWordTest() {
-        assertEquals(83, new WordCounter().countWord(Path.of("src/main/resources/week14/d05/hachiko.srt")));
+        assertEquals(91, new WordCounter().countWord(Path.of("src/main/resources/week14/d05/hachiko.srt")));
     }
 
     @Test
