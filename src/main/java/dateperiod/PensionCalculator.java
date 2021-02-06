@@ -1,4 +1,4 @@
-package period;
+package dateperiod;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -6,25 +6,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pension {
+public class PensionCalculator {
     List<Period> periods = new ArrayList<>();
 
-    Period fullyNormalized(Period period) {
+    private Period fullyNormalized(Period period) {
         if (period == null) throw new IllegalArgumentException("Period is a must!");
 
-        return period.plusMonths(period.getDays() / 30).withDays(period.getDays() % 30).normalized();
+        period = period.normalized();
+        return period.plusMonths(period.getDays() / 30).withDays(period.getDays() % 30);
     }
 
     public void addEmploymentPeriod(Period period) {
         if (period == null) throw new IllegalArgumentException("Period is a must!");
 
-        periods.add(fullyNormalized(period));
+        periods.add(period.normalized());
     }
 
     public Period sumEmploymentPeriods() {
         Period sum = Period.of(0, 0, 0);
+
         for (Period period : periods) {
-            sum.plus(period);
+            sum = sum.plus(period);
         }
         return fullyNormalized(sum);
     }
@@ -36,14 +38,20 @@ public class Pension {
     }
 
     public Period getPeriodBetweenDates(LocalDate fromDate, LocalDate toDate) {
-        if (fromDate == null || toDate == null) throw new IllegalArgumentException("Dates are must!");
+        if (fromDate == null || toDate == null) throw new NullPointerException("Null parameters are not allowed!");
 
         return fullyNormalized(Period.between(fromDate, toDate));
     }
 
     public Period getPeriodBetweenDates(String fromDate, String toDate, String pattern) {
-        if (fromDate.isEmpty() || toDate.isEmpty() || pattern.isEmpty()) {
-            throw new IllegalArgumentException("Dates and pattern are obligatory!");
+        if (isEmpty(fromDate)) {
+            throw new IllegalArgumentException("Empty from date string, cannot use: ");
+        }
+        if (isEmpty(toDate)) {
+            throw new IllegalArgumentException("Empty to date string, cannot use: ");
+        }
+        if (isEmpty(pattern)) {
+            throw new IllegalArgumentException("Empty pattern string, cannot use: ");
         }
 
         return getPeriodBetweenDates(
@@ -54,14 +62,11 @@ public class Pension {
     public int calculateTotalDays(Period period) {
         if (period == null) throw new IllegalArgumentException("Period is a must!");
 
-        return (int) period.toTotalMonths() * 30 + period.getDays();
+        return period.getYears() * 365 + period.getMonths() * 30 + period.getDays();
     }
 
     boolean isEmpty(String value) {
-        if (value == null || value.isBlank()) {
-            return true;
-        }
-        return false;
+        return value == null || value.isBlank();
     }
 }
 //Nyugdíjszámításhoz szükségünk van egy olyan osztályra, amely segítségével összegezni tudjuk a nyugdíj jogosultságot
