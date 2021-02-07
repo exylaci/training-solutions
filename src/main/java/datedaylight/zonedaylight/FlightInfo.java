@@ -1,4 +1,4 @@
-package zonedDateTime;
+package datedaylight.zonedaylight;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -11,8 +11,14 @@ public class FlightInfo {
     ZonedDateTime departure;
 
     public FlightInfo(String dateString, String pattern, Locale locale, ZoneId zone) {
-        if (isEmpty(dateString) || isEmpty(pattern) || locale == null || zone == null) {
-            throw new IllegalArgumentException("Parameters cannot be empty or null!");
+        if (isEmpty(dateString) ) {
+            throw new IllegalArgumentException("Empty date string parameter!");
+        }
+        if ( isEmpty(pattern) ) {
+            throw new IllegalArgumentException("Empty pattern string parameter!");
+        }
+        if ( locale == null || zone == null) {
+            throw new NullPointerException("Locale must not be null!");
         }
 
         departure = ZonedDateTime.of(LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(pattern, locale)),
@@ -22,8 +28,8 @@ public class FlightInfo {
     public ZonedDateTime getArrivalDateTime(ZoneId zone, int flightHours, int flightMinutes) {
         if (zone==null) throw new IllegalArgumentException("Zone is a must!");
 
-        return departure.plusHours(flightHours).plusMinutes(flightMinutes)
-                .withZoneSameLocal(zone);
+        return departure.plusHours(flightHours).plusMinutes(flightMinutes).withZoneSameInstant(zone);
+//                .withZoneSameLocal(zone);
     }
 
     public ZonedDateTime getDepartureDateTime() {
