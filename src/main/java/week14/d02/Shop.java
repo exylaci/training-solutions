@@ -47,7 +47,7 @@ public class Shop {
                 .stream()
                 .filter(shopping -> shopping.getKey().contains("-" + ID))
                 .map(shopping -> shopping.getValue().stream().mapToInt(item -> item.getPrice()).sum())
-                .collect(Collectors.summingInt((a) -> a));
+                .collect(Collectors.summingInt(a -> a));
     }
 
     public int totalSpentOfACustomer(String ID) {                           // 2. feladat
@@ -59,7 +59,8 @@ public class Shop {
                 .mapToInt(a -> a).sum();
     }
 
-    public List<Item> getOrderedOneShoppinglist(String customer, String shoppingId, Function<Item, String> base) {
+    //public List<Item> getOrderedOneShoppinglist(String customer, String shoppingId, Function<Item, String> base) {
+    public List<Item> getOrderedOneShoppinglist(String customer, String shoppingId, Comparator<Item> base) {
         if (base == null) return Collections.emptyList();                   // 3. feladat
 
         return shoppings
@@ -67,7 +68,7 @@ public class Shop {
                 .stream()
                 .filter(shopping -> shopping.getKey().equals(customer + "-" + shoppingId))
                 .flatMap(shopping -> shopping.getValue().stream())
-                .sorted(Comparator.comparing(base))
+                .sorted(base)
                 .collect(Collectors.toList());
     }
 

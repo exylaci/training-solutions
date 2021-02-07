@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,17 +59,19 @@ class ShopTest {
 
     @Test
     void getOrderedOneShoppinglistOrderByNameTest() {
-        assertEquals(Collections.emptyList(), s.getOrderedOneShoppinglist(null, null,null));
+        assertEquals(Collections.emptyList(), s.getOrderedOneShoppinglist(null, null, null));
 
-        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120",Item::getProduct);
+//        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120", Item::getProduct);
+        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120", Comparator.comparing(Item::getProduct));
         assertEquals(7, result.size());
         assertEquals("fish", result.get(2).getProduct());
     }
 
     @Test
     void getOrderedOneShoppinglistOrderByPriceTest() {
-//        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120",Item::getPrice);
-//        assertEquals(7, result.size());
-//        assertEquals("potato", result.get(2).getProduct());
+//        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120", Item::getPrice);
+        List<Item> result = s.getOrderedOneShoppinglist("SM123", "120", Comparator.comparing(Item::getPrice));
+        assertEquals(7, result.size());
+        assertEquals("potato", result.get(2).getProduct());
     }
 }
