@@ -4,11 +4,6 @@ public class Dates {
     private int buyOn;
     private int saleOn;
 
-    public Dates(int buyOn, int saleOn) {
-        this.buyOn = buyOn;
-        this.saleOn = saleOn;
-    }
-
     public int getBuyOn() {
         return buyOn;
     }
@@ -17,19 +12,13 @@ public class Dates {
         return saleOn;
     }
 
-    public void setBuyOn(int buyOn) {
+    public void set(int buyOn, int saleOn) {
         this.buyOn = buyOn;
-    }
-
-    public void setSaleOn(int saleOn) {
         this.saleOn = saleOn;
     }
 
     @Override
     public String toString() {
-        return "Dates{" +
-                "buyOn=" + buyOn +
-                ", saleOn=" + saleOn +
-                '}';
+        return String.format("You should buy on the %dth day, and sale on the %dth day.", buyOn, saleOn);
     }
 }

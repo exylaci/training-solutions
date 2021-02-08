@@ -22,7 +22,7 @@ public class Coordinates {
         return new Map.Entry<>() {
             @Override
             public Double getKey() {
-                return Double.MIN_VALUE;
+                return null;
             }
 
             @Override

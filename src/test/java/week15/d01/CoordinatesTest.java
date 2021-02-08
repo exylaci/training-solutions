@@ -30,7 +30,7 @@ class CoordinatesTest {
 
         Map.Entry<Double, Double> result = c.findMaximumPoint(Map.of());
 
-        assertEquals(Double.MIN_VALUE, result.getKey());
+        assertEquals(null, result.getKey());
         assertEquals(Double.MIN_VALUE, result.getValue());
     }
 }

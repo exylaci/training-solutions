@@ -11,7 +11,13 @@ class BitcoinTest {
     @Test
     void findBestDatesTest() {
         Bitcoin b = new Bitcoin();
-        System.out.println(b.findBestDates(List.of(5, 8, 10, 3, 9, 8, 1, 6)));
-        System.out.println(b.findBestDates(List.of(9, 7, 4, 1)));
+
+        Dates result = b.findBestDates(List.of(9, 6, 4, 1));
+        assertEquals(1,result.getBuyOn());
+        assertEquals(2,result.getSaleOn());
+
+        result=b.findBestDates(List.of(190, 300, 40, 70, 200, 30, 50));
+        assertEquals(2,result.getBuyOn());
+        assertEquals(4,result.getSaleOn());
     }
 }
