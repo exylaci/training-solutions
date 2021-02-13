@@ -24,4 +24,9 @@ class GameOfThronesTest {
     void findMostFightingHouseTest() {
         assertEquals("Lannister", g.findMostFightingHouse());
     }
+
+    @Test
+    void findMostFightingHouseByStreamTest() {
+        assertEquals("Lannister", g.findMostFightingHouseByStream(Path.of("src/main/resources/week15/d05/battles.csv")).get());
+    }
 }

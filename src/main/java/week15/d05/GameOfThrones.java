@@ -2,14 +2,46 @@ package week15.d05;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameOfThrones {
     public static final String SEPARATOR = ",";
 
     private List<Bottles> bottles = new ArrayList<>();
+
+    public Optional<String> findMostFightingHouseByStream(Path path) {
+        try (Stream<String> combats = Files.lines(path, StandardCharsets.US_ASCII)) {
+            Optional<Map.Entry<String, Long>> house = combats
+                    .skip(1)
+                    .filter(oneLine -> !oneLine.isBlank())
+                    .flatMap(this::getHouses)
+                    .filter(oneHouse -> !oneHouse.isBlank())
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                    .entrySet()
+                    .stream()
+                    .max((a, b) -> (int) (a.getValue() - b.getValue()));
+
+            if (house.isEmpty()) {
+                return Optional.empty();
+            }
+            return Optional.of(house.get().getKey());
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Can't read from file");
+        }
+    }
+
+    private Stream<String> getHouses(String oneLine) {
+        String[] parts = oneLine.replace(", ","§§").split(",");
+        String[] houses = Arrays.copyOfRange(parts,5,13);
+        return Arrays.stream(houses);
+    }
 
     public void loadFromFile(Path path) {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
