@@ -87,7 +87,7 @@ public class CruiseTest {
         cruise.bookPassenger(new Passenger("Jack Doe", CruiseClass.FIRST));
 
         Map<CruiseClass, Long> result = cruise.countPassengerByClass();
-        assertEquals(Map.of(CruiseClass.LUXURY, 2, CruiseClass.FIRST, 1), result);
+        assertEquals(Map.of(CruiseClass.LUXURY, 2L, CruiseClass.FIRST, 1L), result);
     }
 
 }
