@@ -70,12 +70,11 @@ public class Cruise {
     }
 
     public Map<CruiseClass, Long> countPassengerByClass() {
-        return Collections.unmodifiableMap(
-                passengers
-                        .stream()
-                        .collect(Collectors.groupingBy(
-                                Passenger::getCruiseClass,
-                                Collectors.counting())));
+        return passengers
+                .stream()
+                .collect(Collectors.groupingBy(
+                        Passenger::getCruiseClass,
+                        Collectors.counting()));
     }
 }
 //Utazási iroda hajóutakat szervez. Minden hajóút egy adott hajóval történik, amelynek neve és befogadóképessége a egy
