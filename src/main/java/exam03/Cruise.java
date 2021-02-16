@@ -72,40 +72,50 @@ public class Cruise {
     public Map<CruiseClass, Integer> countPassengerByClass() {
         return passengers
                 .stream()
-                .collect(Collectors.groupingBy(
+                .collect(Collectors.toMap(
                         Passenger::getCruiseClass,
-                        Collectors.counting()))
-                .entrySet()
-                .stream()
-                .map(this::castMapValueFromLongToInteger)
-                .sorted(reverseOrder)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum));
+                        p -> 1,
+                        Integer::sum));
     }
 
-    private final Comparator<Map.Entry<CruiseClass, Integer>> reverseOrder = (a, b) -> b.getValue() - a.getValue();
+//    public Map<CruiseClass, Integer> countPassengerByClass_old() {
+//        return passengers
+//                .stream()
+//                .collect(Collectors.groupingBy(
+//                        Passenger::getCruiseClass,
+//                        Collectors.counting()))
+//                .entrySet()
+//                .stream()
+//                .map(this::castMapValueFromLongToInteger)
+//                .sorted(reverseOrder)
+//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum));
+//    }
+//
+//    private final Comparator<Map.Entry<CruiseClass, Integer>> reverseOrder = (a, b) -> b.getValue() - a.getValue();
+//
+//    private Map.Entry<CruiseClass, Integer> castMapValueFromLongToInteger(Map.Entry<CruiseClass, Long> entryWithLong) {
+//        return new Map.Entry<>() {
+//            private final CruiseClass key = entryWithLong.getKey();
+//            private int value = (int) ((long) entryWithLong.getValue());
+//
+//            @Override
+//            public CruiseClass getKey() {
+//                return key;
+//            }
+//
+//            @Override
+//            public Integer getValue() {
+//                return value;
+//            }
+//
+//            @Override
+//            public Integer setValue(Integer value) {
+//                this.value = value;
+//                return value;
+//            }
+//        };
+//    }
 
-    private Map.Entry<CruiseClass, Integer> castMapValueFromLongToInteger(Map.Entry<CruiseClass, Long> entryWithLong) {
-        return new Map.Entry<>() {
-            private final CruiseClass key = entryWithLong.getKey();
-            private int value = (int) ((long) entryWithLong.getValue());
-
-            @Override
-            public CruiseClass getKey() {
-                return key;
-            }
-
-            @Override
-            public Integer getValue() {
-                return value;
-            }
-
-            @Override
-            public Integer setValue(Integer value) {
-                this.value = value;
-                return value;
-            }
-        };
-    }
 }
 //Utazási iroda hajóutakat szervez. Minden hajóút egy adott hajóval történik, amelynek neve és befogadóképessége a egy
 //Boat osztályban van tárolva.

@@ -2,36 +2,28 @@ package exam03;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Histogram {
 
 
-    public String createHistogram(BufferedReader reader) {
-        StringBuilder result = new StringBuilder();
-        String oneLine;
-        try {
-            while ((oneLine = reader.readLine()) != null) {
-                result.append(processOneLine(oneLine));
-            }
-            return result.toString();
-        } catch (IOException e) {
-            throw new IllegalStateException("Can't read!");
-        }
-
+    public String createHistogram(BufferedReader reader) throws IOException {
+        return reader
+                .lines()
+                .filter(dropBlankLines)
+                .map(Integer::parseInt)
+                .map(this::convertToStars)
+                .collect(Collectors.joining());
     }
 
-    private String processOneLine(String oneLine) {
-        if (oneLine.isBlank()) {
-            return "";
-        }
-        int pieces = Integer.parseInt(oneLine);
-        return Stream
-                .generate(() -> "*")
-                .limit(pieces)
-                .collect(Collectors.joining()) + "\n";
+    private Predicate<String> dropBlankLines = a -> !a.isBlank();
+
+    private String convertToStars(Integer pieces) {
+        return Stream.generate(() -> "*").limit(pieces).collect(Collectors.joining()) + "\n";
     }
+
 }
 //Hisztogram
 //
