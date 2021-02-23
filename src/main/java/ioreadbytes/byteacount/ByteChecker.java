@@ -14,7 +14,7 @@ public class ByteChecker {
         int size;
         int counter = 0;
 
-        Path path = Path.of("src/main/resources/byteacount").resolve(pathString);
+        Path path = Path.of("src/main/resources/ioreadbytes/byteacount").resolve(pathString);
         try {
             InputStream reader = new BufferedInputStream(Files.newInputStream(path));
             while ((size = reader.read(puffer)) > 0) {
