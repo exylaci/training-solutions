@@ -34,22 +34,52 @@ public class ActivityDao {
     }
 
     public Activity saveActivity(Activity activity) {
-        try (Connection connection = source.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO activity (start_time,description,activity_type) VALUES(?,?,?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
-            // statement.setString(1, dataTableName);
-            statement.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
-            statement.setString(2, activity.getDecription());
-            statement.setString(3, activity.getType().name());
-            statement.executeUpdate();
+        try (Connection connection = source.getConnection()) {
+            connection.setAutoCommit(false);
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO activity (start_time,description,activity_type) VALUES(?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS)) {
+                statement.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
+                statement.setString(2, activity.getDecription());
+                statement.setString(3, activity.getType().name());
+                statement.executeUpdate();
 
-            ResultSet result = statement.getGeneratedKeys();
-            result.next();
-            return new Activity(result.getInt("id"), activity);
+                if (!saveTrackPoints(connection, activity)) {
+                    connection.rollback();
+                }
+                connection.commit();
+                ResultSet result = statement.getGeneratedKeys();
+                result.next();
+                return new Activity(result.getInt("id"), activity);
 
+            } catch (SQLException e) {
+                throw new IllegalStateException("Can't insert data into the database!", e);
+            }
         } catch (SQLException e) {
             throw new IllegalStateException("Can't insert data into the database!", e);
+        }
+    }
+
+    private boolean saveTrackPoints(Connection connection, Activity activity) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO track_point (register_time,lat,lon,activity_id) VALUES(?,?,?,?)")) {
+            if (activity.getTrackPoints() == null) {
+                return true;
+            }
+            for (TrackPoint trackPoint : activity.getTrackPoints()) {
+                if (trackPoint.getLat() < -90 || trackPoint.getLat() > 90 ||
+                        trackPoint.getLon() < -180 || trackPoint.getLon() > 180) {
+                    return false;
+                }
+                statement.setDate(1, Date.valueOf(trackPoint.getTime()));
+                statement.setDouble(2, trackPoint.getLat());
+                statement.setDouble(3, trackPoint.getLon());
+                statement.setInt(4, activity.getId());
+                statement.executeUpdate();
+            }
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
     }
 
@@ -68,11 +98,13 @@ public class ActivityDao {
     private Activity executeTheSelection(PreparedStatement statement) throws SQLException {
         try (ResultSet result = statement.executeQuery()) {
             if (result.next()) {
+                List<TrackPoint> trackPoints = findTrackPointsActivityId(result.getInt("id"));
                 return new Activity(
                         result.getInt("id"),
                         result.getTimestamp("start_time").toLocalDateTime(),
                         result.getString("description"),
-                        Type.valueOf(result.getString("activity_type")));
+                        Type.valueOf(result.getString("activity_type")),
+                        trackPoints);
             }
             throw new IllegalArgumentException("Can't find it!");
         }
@@ -85,16 +117,44 @@ public class ActivityDao {
             List<Activity> activities = new ArrayList<>();
             ResultSet result = statement.executeQuery("SELECT * FROM activity");
             while (result.next()) {
+                List<TrackPoint> trackPoints = findTrackPointsActivityId(result.getInt("id"));
                 activities.add(new Activity(
                         result.getInt("id"),
                         result.getTimestamp("start_time").toLocalDateTime(),
                         result.getString("description"),
-                        Type.valueOf(result.getString("activity_type"))));
+                        Type.valueOf(result.getString("activity_type")),
+                        trackPoints));
             }
             return activities;
 
         } catch (SQLException e) {
             throw new IllegalStateException("Can't import from the database!", e);
+        }
+    }
+
+    public List<TrackPoint> findTrackPointsActivityId(int activityId) {
+        try (Connection connection = source.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT * FROM track_point WHERE activity_id = ?")) {
+
+            List<TrackPoint> trackPoints = new ArrayList<>();
+
+            statement.setInt(1, activityId);
+            statement.executeUpdate();
+
+            try (ResultSet result = statement.getResultSet()) {
+                while (result.next()) {
+                    trackPoints.add(new TrackPoint(
+                            result.getInt("id"),
+                            result.getDate("register_time").toLocalDate(),
+                            result.getDouble("lat"),
+                            result.getDouble("lon")));
+                }
+
+            }
+            return trackPoints;
+        } catch (SQLException e) {
+            throw new IllegalStateException("Can't read from database", e);
         }
     }
 }
