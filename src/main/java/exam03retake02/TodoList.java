@@ -41,9 +41,10 @@ public class TodoList {
     }
 
     public void deleteCompleted() {
-        for (int i = 0; i < todos.size(); ++i) {
-            if (!todos.get(i).isNotComplete())
-                todos.remove(i);
+        Iterator<Todo> iterator = todos.iterator();
+        while (iterator.hasNext()) {
+            if (!iterator.next().isNotComplete())
+                iterator.remove();
         }
     }
 }
