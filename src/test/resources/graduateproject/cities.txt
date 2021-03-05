@@ -1,0 +1,13 @@
+2021;Tahitótfalu, Tótfalu
+2022;Tahitótfalu, Tahi
+2023;Dunabogdány
+2024;Kisoroszi
+2025;Visegrád
+2026;Visegrád, Gizellatel
+2027;Dömös
+2028;Pilismarót
+2030;Érd
+2038;Sóskút
+2066;Szár
+2066;Újbarok
+4128;Bedő
