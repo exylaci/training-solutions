@@ -37,3 +37,12 @@ INSERT INTO `cities` (`zip`, `city`) VALUES ('2038', 'Sóskút');
 INSERT INTO `cities` (`zip`, `city`) VALUES ('2066', 'Szár');
 INSERT INTO `cities` (`zip`, `city`) VALUES ('2066', 'Újbarok');
 INSERT INTO `cities` (`zip`, `city`) VALUES ('4128', 'Bedő');
+
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2023',0,'a@a.aa','000000000',0);
+INSERT INTO vaccination (id, vaccine) VALUES ('1', 'placebo');
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2022',0,'a@a.aa','000000001',1);
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2022',0,'a@a.aa','000000002',1);
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2022',0,'a@a.aa','000000003',2);
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2024',0,'a@a.aa','000000004',1);
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2024',0,'a@a.aa','000000005',2);
+INSERT INTO citizens (citizen_name, zip, age, email, taj, number_of_vaccinations) VALUE ('a a','2024',0,'a@a.aa','000000006',2);

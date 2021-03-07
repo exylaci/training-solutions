@@ -59,6 +59,6 @@ class LogicTest {
         statement.close();
         connection.close();
 
-        assertEquals(57, lastIndex);
+        assertEquals(64, lastIndex);
     }
 }

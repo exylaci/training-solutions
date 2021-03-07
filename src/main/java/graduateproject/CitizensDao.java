@@ -177,7 +177,6 @@ public class CitizensDao {
 
     public void storeSuccessfulVacination(Vaccine vaccine) {
         try (Connection connection = source.getConnection()) {
-            connection.setAutoCommit(false);
             insertIntoTables(vaccine, connection);
         } catch (SQLException e) {
             throw new IllegalStateException("Can't connect to vaccinations ore CITIZENS data table", e);
@@ -185,12 +184,17 @@ public class CitizensDao {
     }
 
     private void insertIntoTables(Vaccine vaccine, Connection connection) throws SQLException {
+        connection.setAutoCommit(false);
         try (PreparedStatement preparedStatementVaccine = connection.prepareStatement(
-                "INSERT INTO vaccination (id, vaccination_date, vaccine, result, note) VALUES(?,?,?,?,?)");
-             PreparedStatement preparedStatementCitizenNumber = connection.prepareStatement(
-                     "UPDATE citizens SET number_of_vaccinations = number_of_vaccinations +1 WHERE id=?");
-             PreparedStatement preparedStatementCitizenDate = connection.prepareStatement(
-                     "UPDATE citizens SET last_vacciantion = ? WHERE id=?")) {
+                """
+                        INSERT INTO vaccination (id, vaccination_date, vaccine, result, note)
+                         VALUES(?,?,?,?,?)""");
+             PreparedStatement preparedStatementCitizen = connection.prepareStatement(
+                     """
+                             UPDATE citizens
+                              SET number_of_vaccinations = number_of_vaccinations +1, 
+                                  last_vacciantion = ? 
+                              WHERE id=?""")) {
 
             preparedStatementVaccine.setInt(1, vaccine.getId());
             preparedStatementVaccine.setDate(2, Date.valueOf(vaccine.getDate()));
@@ -199,12 +203,9 @@ public class CitizensDao {
             preparedStatementVaccine.setString(5, vaccine.getNote());
             preparedStatementVaccine.executeUpdate();
 
-            preparedStatementCitizenNumber.setInt(1, vaccine.getId());
-            preparedStatementCitizenNumber.executeUpdate();
-
-            preparedStatementCitizenDate.setDate(1, Date.valueOf(vaccine.getDate()));
-            preparedStatementCitizenDate.setInt(2, vaccine.getId());
-            preparedStatementCitizenDate.executeUpdate();
+            preparedStatementCitizen.setDate(1, Date.valueOf(vaccine.getDate()));
+            preparedStatementCitizen.setInt(2, vaccine.getId());
+            preparedStatementCitizen.executeUpdate();
 
             connection.commit();
         } catch (SQLException e) {
@@ -252,22 +253,27 @@ public class CitizensDao {
     }
 
 
-    public List<String> getReport() {
-
+    public List<String> getReport_v1() {
         try (Connection connection = source.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
-                     "SELECT COUNT(id) AS pieces, number_of_vaccinations, zip FROM citizens " +
-                             "GROUP BY zip, number_of_vaccinations ORDER BY zip")) {
+                     """
+                             SELECT 
+                                COUNT(id) AS pieces, 
+                                number_of_vaccinations,
+                                zip FROM citizens 
+                              GROUP BY zip,
+                                number_of_vaccinations
+                              ORDER BY zip""")) {
 
-            return prepareReport(resultSet);
+            return prepareReport_v1(resultSet);
 
         } catch (SQLException e) {
             return Collections.EMPTY_LIST;
         }
     }
 
-    private List<String> prepareReport(ResultSet resultSet) throws SQLException {
+    private List<String> prepareReport_v1(ResultSet resultSet) throws SQLException {
         List<String> report = new ArrayList<>();
         String zip = "";
         int[] values = new int[3];
@@ -292,4 +298,45 @@ public class CitizensDao {
 
         return report;
     }
+
+
+    public List<String> getReport() {
+
+        try (Connection connection = source.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("""
+                     SELECT
+                             citizens.zip AS z,
+                             cities.city,
+                             (SELECT  COUNT(id)  FROM citizens  WHERE citizens.zip = z AND number_of_vaccinations =0 )  AS v0,
+                             (SELECT  COUNT(id)  FROM citizens  WHERE citizens.zip = z AND number_of_vaccinations =1 )  AS v1,
+                             (SELECT  COUNT(id)  FROM citizens  WHERE citizens.zip = z AND number_of_vaccinations =2 )  AS v2
+                     FROM citizens 
+                     JOIN cities ON citizens.zip = cities.zip 
+                     GROUP BY citizens.zip 
+                     ORDER BY cities.city
+                                   	""")) {
+
+            return prepareReport(resultSet);
+
+        } catch (SQLException e) {
+            return Collections.EMPTY_LIST;
+        }
+    }
+
+    private List<String> prepareReport(ResultSet resultSet) throws SQLException {
+        List<String> report = new ArrayList<>();
+        report.add(String.format("%4s %8s %8s %8s %s", "irsz", "oltatlan", "1-szer", "2-szer", "település név"));
+
+        while (resultSet.next()) {
+            report.add(String.format("%4s %8d %8d %8d %s",
+                    resultSet.getString("z"),
+                    resultSet.getInt("v0"),
+                    resultSet.getInt("v1"),
+                    resultSet.getInt("v2"),
+                    resultSet.getString("city")));
+        }
+        return report;
+    }
+
 }

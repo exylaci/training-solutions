@@ -58,9 +58,9 @@ class ActivityTrackerTest {
             assertEquals(i, dao.saveActivity(activities.get(i - 1)).getId());
         }
 
-        assertEquals("Mátra kijárása", dao.findActivityById(2).getDecription());
+        assertEquals("Street ball championship.", dao.findActivityById(4).getDecription());
 
-        assertEquals(4, dao.listActivities().size());
+        assertEquals(1, dao.listActivities().size());
 
     }
 }

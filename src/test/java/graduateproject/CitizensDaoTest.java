@@ -69,7 +69,7 @@ class CitizensDaoTest {
         Citizen citizen = new Citizen("vezetéknév keresztnév;2013;100;a@b.cd;123456782");
         dao.insertCitizenDao(citizen);
 
-        assertEquals(1, getSize());
+        assertEquals(8, getSize());
     }
 
     @Test
@@ -80,7 +80,7 @@ class CitizensDaoTest {
 
         assertThrows(IllegalStateException.class, () -> dao.insertCitizenDao(citizen));
 
-        assertEquals(1, getSize());
+        assertEquals(8, getSize());
     }
 
     @Test
@@ -95,7 +95,7 @@ class CitizensDaoTest {
         result = dao.insertCitizensFromStreamDao(scanner, result);
 
         System.out.println(result);
-        assertEquals(2, getSize());
+        assertEquals(9, getSize());
         assertEquals(0, result.size());
     }
 
@@ -112,7 +112,7 @@ class CitizensDaoTest {
 
         result = dao.insertCitizensFromStreamDao(scanner, result);
 
-        assertEquals(0, getSize());
+        assertEquals(7, getSize());
         assertEquals(2, result.size());
     }
 
@@ -132,13 +132,12 @@ class CitizensDaoTest {
 
     @Test
     void storeSuccessfulVacination() throws IOException, SQLException {
-        generate();
         Vaccine vaccine = new Vaccine();
-        vaccine.setId(8);
+        vaccine.setId(1);
         vaccine.setVaccine("placebo");
         vaccine.setNote("note into vaccinate data table");
         vaccine.setResult(Logic.SUCCESSFUL);
-        vaccine.setDate(LocalDate.of(2021, 3, 5));
+        vaccine.setDate(LocalDate.of(2000, 12, 31));
         vaccine.setNumberOfVaccinations(100);
 
         new CitizensDao(source).storeSuccessfulVacination(vaccine);
@@ -150,7 +149,7 @@ class CitizensDaoTest {
         Connection connection = source.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT result FROM vaccination");
-        resultSet.first();
+        resultSet.last();
         String temp = resultSet.getString("result");
         resultSet.close();
         statement.close();
@@ -161,13 +160,12 @@ class CitizensDaoTest {
 
     @Test
     void storeFailedVacination() throws IOException, SQLException {
-        generate();
         Vaccine vaccine = new Vaccine();
-        vaccine.setId(8);
+        vaccine.setId(1);
         vaccine.setVaccine("placebo");
         vaccine.setNote("note into vaccinate data table");
         vaccine.setResult(Logic.FAILED);
-        vaccine.setDate(LocalDate.of(2021, 3, 5));
+        vaccine.setDate(LocalDate.of(2000, 12, 31));
         vaccine.setNumberOfVaccinations(100);
 
         new CitizensDao(source).storeSuccessfulVacination(vaccine);
@@ -177,12 +175,12 @@ class CitizensDaoTest {
 
     @Test
     void getReport() throws IOException, SQLException {
-        storeSuccessfulVacination();
-
         CitizensDao dao = new CitizensDao(source);
         List<String> reesult = dao.getReport();
 
-        assertEquals(9, reesult.size());
-        assertEquals("2026        6        1        0", reesult.get(6));
+        assertEquals(4, reesult.size());
+        assertEquals("2023        1        0        0 Dunabogdány", reesult.get(1));
+        assertEquals("2024        0        1        2 Kisoroszi", reesult.get(2));
+        assertEquals("2022        0        2        1 Tahitótfalu, Tahi", reesult.get(3));
     }
 }
