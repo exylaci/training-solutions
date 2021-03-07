@@ -5,6 +5,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class InputsWithGenerics {
+    public static final String PATH_PATTERN = "[[A-Za-z]:[\\\\/]]?[\\w[\\\\/]]*[\\w]+\\.[A-Za-z]+";
+    public static final String EMAIL_PATTERN = "[a-z0-9]+[a-z0-9\\.-]*@([a-z0-9-]+\\.)+[a-z]{2,4}";
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -16,10 +18,11 @@ public class InputsWithGenerics {
     }
 
     private void asker() {
-        String name = inputData("neved: ", "Hibás név!", this::inputString, this::checkName);
+        String file = inputData("fájl: ", "Hibás path!", this::inputString, this::checkFile);
+        String email = inputData("email: ", "Hibás email!", this::inputString, this::checkEmail);
         int age = inputData("életkor: ", "18 és 150 között kell legyen!", this::inputInt, this::checkAge);
 
-        System.out.println(name + ", " + age);
+        System.out.println(file +" "+email + ", " + age);
     }
 
     private <T> T inputData(String question, String error, Supplier<T> supplier, Predicate<T> predicate) {
@@ -36,8 +39,13 @@ public class InputsWithGenerics {
         return value;
     }
 
-    private boolean checkName(String value) {
-        return value.contains(" ");
+    private boolean checkFile(String value) {
+        return value.matches(PATH_PATTERN);
+    }
+
+    private boolean checkEmail(String email) {
+        return email.toLowerCase().matches(EMAIL_PATTERN)
+                || !email.contains(".@");
     }
 
     private boolean checkAge(int value) {
