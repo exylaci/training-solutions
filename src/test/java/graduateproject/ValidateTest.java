@@ -15,14 +15,8 @@ class ValidateTest {
 
     @BeforeAll
     public static void initialize() throws SQLException {
-        MariaDbDataSource source;
-        source = new MariaDbDataSource();
-        source.setUrl("jdbc:mariadb://localhost:3306/graduate_project?useUnicode=true");
-        source.setUser("vaccine");
-        source.setPassword("vaccine");
-        validate = new Validate(source);
+        validate = new Validate(null);
     }
-
 
     @Test
     void CheckName() {
@@ -33,7 +27,16 @@ class ValidateTest {
     }
 
     @Test
-    void CheckZip() {
+    void CheckZip() throws SQLException {
+        MariaDbDataSource source;
+        source = new MariaDbDataSource();
+        source.setUrl("jdbc:mariadb://localhost:3306/graduate_project?useUnicode=true");
+        source.setUser("vaccine");
+        source.setPassword("vaccine");
+        Logic  logic = new Logic(source);
+        logic.initialize();
+        validate = new Validate(source);
+
         assertTrue(validate.checkZip(""));
         assertTrue(validate.checkZip("0000"));
         assertFalse(validate.checkZip("2021"));
