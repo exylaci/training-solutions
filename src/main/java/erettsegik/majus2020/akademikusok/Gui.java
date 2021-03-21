@@ -68,7 +68,7 @@ public class Gui {
     private void feladat2() {
         System.out.println("\n2. feladat");
 
-        List<String> names = logic.feladat1();
+        List<String> names = logic.feladat2();
 
         for (String name : names) {
             System.out.println("\t" + name);
@@ -84,7 +84,7 @@ public class Gui {
 
         List<Report3> result = logic.feladat3();
 
-        System.out.printf("\t%-55s %-30s %s %s%n", "név", "identitás", "t", "év");
+        System.out.printf("\t%-55s %-26s %s %s%n", "név", "identitás", "tipus", "év");
         for (Report3 one : result) {
             System.out.printf("\t%-55s %-30s %s %d%n", one.getNev(), one.getIdentitas(), one.getTipus(), one.getEv());
         }

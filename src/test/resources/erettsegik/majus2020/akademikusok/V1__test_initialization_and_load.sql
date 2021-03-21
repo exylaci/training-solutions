@@ -13,12 +13,20 @@ CREATE TABLE if NOT EXISTS tagsag(
 	ev INT,
 	FOREIGN KEY(tagid) REFERENCES tag(id));
 
-LOAD DATA LOCAL INFILE 'C:\\training\\training-solutions\\src\\main\\resources\\erettsegik\\majus2020\\akademikusok\\tag.txt'
+LOAD DATA LOCAL INFILE 'src/main/resources/erettsegik/majus2020/akademikusok/tag.txt'
     REPLACE INTO TABLE `tag`
     CHARACTER SET 'utf8'
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\r\n'
     IGNORE 1 LINES
-    (`id`,  `nev`,  `nem`,  @szuletett,  @elhunyt, @identitas)
+    (`id`,  `nev`,  `nem`,  @szuletett,  @elhunyt, identitas)
     SET `elhunyt` = IF(@elhunyt = '', NULL, @elhunyt),
 	`szuletett` = IF(@szuletett = '', NULL, @szuletett);
+
+LOAD DATA LOCAL INFILE 'src/main/resources/erettsegik/majus2020/akademikusok/tagsag.txt'
+    REPLACE INTO TABLE `tagsag`
+    CHARACTER SET 'utf8'
+    FIELDS TERMINATED BY '\t'
+    LINES TERMINATED BY '\r\n'
+    IGNORE 1 LINES
+    (`id`,  `tagid`,  `tipus`, `ev`);

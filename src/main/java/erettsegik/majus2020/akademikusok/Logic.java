@@ -14,12 +14,12 @@ public class Logic {
         dao.clean();
     }
 
-    public List<String> feladat1() {
-        return dao.feladat1();
+    public List<String> feladat2() {
+        return dao.feladat2();
     }
 
     public List<Report3> feladat3() {
-        return dao.feladat2();
+        return dao.feladat3();
     }
 
     public List<Report4> feladat4() {

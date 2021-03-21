@@ -80,11 +80,11 @@ public class Dao {
         }
     }
 
-    public List<String> feladat1() {
+    public List<String> feladat2() {
         try (Connection connection = source.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
-                     "SELECT nev FROM tag WHERE elhunyt='' ORDER BY nev")) {
+                     "SELECT nev FROM tag WHERE elhunyt='' OR elhunyt IS NULL ORDER BY nev")) {
 
             List<String> result = new ArrayList<>();
             while (resultSet.next()) {
@@ -97,14 +97,14 @@ public class Dao {
         }
     }
 
-    public List<Report3> feladat2() {
+    public List<Report3> feladat3() {
         try (Connection connection = source.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
                      """
                              SELECT nev, identitas, tipus, ev FROM tag
                              JOIN tagsag ON tagid=tag.id
-                             WHERE identitas<>''
+                             WHERE identitas<>'' AND identitas IS NOT NULL
                              ORDER BY ev,nev
                              """)) {
 

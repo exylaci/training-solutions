@@ -30,12 +30,12 @@ class LogicTest {
                 .locations("filesystem:src/test/resources/erettsegik/majus2020/akademikusok")
                 .dataSource(source)
                 .load();
-//        flyway.clean();
-//        flyway.migrate();
+        flyway.clean();
+        flyway.migrate();
     }
 
     @Test
     void teszt() {
-        System.out.println("Lefutott");
+        System.out.println("Lefutott :) ");
     }
 }
