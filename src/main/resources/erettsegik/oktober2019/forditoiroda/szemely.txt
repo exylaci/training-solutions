@@ -1,0 +1,77 @@
+id	nev	elerheto
+1	Skvar Tamás	-1
+2	Tatár István	-1
+3	Siket Karen	0
+4	Horváth Mercédesz	-1
+5	Dombovári Petra	-1
+6	Rém Elek	-1
+7	Kamarás Zsófia Viktória	-1
+8	Sebő Tas	-1
+9	Szendrődi Csaba	-1
+10	Berger Péter	-1
+11	Csonka Anna	-1
+12	Szelei Anikó Dorina	-1
+13	Kovács Ágnes	-1
+14	Szőke Mátyás	-1
+15	Kiss Zsófia	-1
+16	Bakos Kata Judit	-1
+17	Bodnár Anna Katalin	-1
+18	Keszthelyi Zsolt	-1
+19	Kiss Lajos	0
+20	Szabó Orsolya Virág	0
+21	Vég Kálmán	-1
+22	Hirzer Zsolt	-1
+23	Kincses Zoltán	-1
+24	Zentay Réka	-1
+25	Kovai Róbert	-1
+26	Koch Róbert	-1
+27	Szilágyi István	0
+28	Horváth Pál	-1
+29	Duma Árpád	-1
+30	Nemes Gerda	-1
+31	Zsolnai Péter	0
+32	Illés Nóra	-1
+33	Fődi Anna	-1
+34	Szűcs Lóránt	-1
+35	Borsos Anett	-1
+36	Sarlós Róbert	-1
+37	Hoffmann Bettina	-1
+38	Farkas Ildikó	-1
+39	Gál Brigitta	0
+40	Szabó Izabella Diána	-1
+41	Rácz Lili	0
+42	Botos Noémi	-1
+43	Kasznár Judit	-1
+44	Lengyel Zsófia	-1
+45	Kerekes Lili	-1
+46	Kis Barbara Emma	-1
+47	Vida Csongor	-1
+48	Nagy Eszter	-1
+49	Benkő Kata Enikő	-1
+50	Urbán Roland	-1
+51	Samu Blanka	0
+52	Pálinkás Anna	-1
+53	Falch Emil	0
+54	Teleki Kálmán	-1
+55	Sima Dezső	-1
+56	Rudas Ádám	-1
+57	Forrai Laura	0
+58	Irinyi Katalin Ida	-1
+59	Hódi Vivien	-1
+60	Máté Oszkár	-1
+61	Püski Kata	-1
+62	Mészáros Anita Réka	-1
+63	Kis Nóra Judit	-1
+64	Nyári Judit	-1
+65	Balog Orsolya	-1
+66	Zombori Adrienn	-1
+67	Tóti Albert	-1
+68	Szabó Lilla	-1
+69	Petres Zoltán	-1
+70	Barta Petra	-1
+71	Rovó Petra	-1
+72	Bor János	-1
+73	Fogó Róbert	-1
+74	Juhász Imre	-1
+75	Nagy Tímea	0
+76	Tanács Lilla	-1

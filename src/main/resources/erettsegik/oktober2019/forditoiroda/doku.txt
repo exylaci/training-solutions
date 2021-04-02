@@ -1,0 +1,115 @@
+id	terjedelem	szakterulet	nyelvid	munkaido
+1	111932	jog	3	8
+2	90630	hivatalos okmány	1	8
+3	128217	informatika	5	4
+4	81699	pszichológia	91	13
+5	135694	jog	65	5
+6	140936	hivatalos okmány	5	10
+7	60677	informatika	46	8
+8	75321	pszichológia	23	13
+9	145299	jog	1	13
+10	61808	hivatalos okmány	2	6
+11	45416	informatika	93	8
+12	25600	pszichológia	56	7
+13	103703	kereskedelem	96	10
+14	10017	marketing	3	7
+15	104520	marketing	88	10
+16	88806	idegenforgalom	46	9
+17	25685	építőipar	97	9
+18	103737	irodalom	5	14
+19	43435	vegyipar	1	1
+20	18902	pénzügy	23	11
+21	87064	hivatalos levelezés	52	8
+22	65690	gépészet	7	12
+23	134454	elektronika	35	5
+24	102427	életmód	50	11
+25	134769	sport	4	10
+26	83203	környzetvédelem	54	3
+27	131487	marketing	1	15
+28	130810	ingatlan	2	12
+29	36753	logisztika	51	9
+30	33051	marketing	10	7
+31	126741	ingatlan	52	15
+32	134898	logisztika	50	12
+33	131665	pszichológia	50	11
+34	33128	kereskedelem	50	5
+35	13191	idegenforgalom	51	9
+36	16977	marketing	61	10
+37	100467	ingatlan	50	5
+38	100532	marketing	104	13
+39	13628	ingatlan	49	3
+40	99985	logisztika	23	13
+41	17736	hivatalos levelezés	87	6
+42	96820	gépészet	102	14
+43	82163	elektronika	41	13
+44	82834	életmód	32	7
+45	28346	sport	40	9
+46	75106	életmód	6	5
+47	31780	sport	78	2
+48	134765	életmód	23	10
+49	111867	sport	92	7
+50	71202	életmód	64	3
+51	60960	sport	18	12
+52	124477	pszichológia	50	9
+53	47953	kereskedelem	9	4
+54	47275	idegenforgalom	50	7
+55	48762	pszichológia	68	5
+56	116143	pszichológia	9	2
+57	147329	kereskedelem	58	15
+58	92090	idegenforgalom	50	9
+59	109009	irodalom	89	9
+60	93969	irodalom	34	6
+61	115456	irodalom	50	7
+62	2911	sport	20	3
+63	106903	irodalom	59	11
+64	87564	irodalom	50	3
+65	77039	irodalom	50	14
+66	79114	pénzügy	94	6
+67	137429	hivatalos levelezés	87	8
+68	148592	gépészet	50	10
+69	18006	elektronika	93	11
+70	103342	pénzügy	50	13
+71	124148	hivatalos levelezés	29	5
+72	120648	gépészet	14	4
+73	96161	elektronika	77	10
+74	3139	életmód	86	8
+75	114171	hivatalos levelezés	89	13
+76	4823	hivatalos levelezés	51	1
+77	84995	hivatalos levelezés	10	3
+78	115263	hivatalos levelezés	91	14
+79	55404	hivatalos levelezés	50	6
+80	50803	hivatalos levelezés	52	11
+81	137144	hivatalos levelezés	12	13
+82	59669	pénzügy	51	10
+83	24137	pénzügy	3	1
+84	69478	irodalom	3	8
+85	48414	irodalom	50	12
+86	138129	irodalom	39	8
+87	10767	irodalom	50	11
+88	6045	irodalom	50	3
+89	102679	irodalom	58	13
+90	142379	pénzügy	58	14
+91	141032	környzetvédelem	51	13
+92	143820	környzetvédelem	19	15
+93	123483	környzetvédelem	50	8
+94	119705	környzetvédelem	2	3
+95	121680	környzetvédelem	129	12
+96	27461	vegyipar	44	10
+97	142464	elektronika	47	2
+98	54162	elektronika	2	7
+99	91945	elektronika	37	8
+100	74921	elektronika	50	2
+101	88852	elektronika	51	13
+102	119913	irodalom	51	5
+103	127807	irodalom	50	5
+104	42868	elektronika	124	4
+105	142781	vegyipar	2	12
+106	28415	elektronika	60	4
+107	11871	elektronika	91	5
+108	94497	elektronika	23	7
+109	65428	irodalom	120	12
+110	67236	irodalom	10	8
+111	90071	irodalom	6	2
+112	23792	irodalom	1	7
+113	23435	vegyipar	1	11
+114	96804	vegyipar	1	3
