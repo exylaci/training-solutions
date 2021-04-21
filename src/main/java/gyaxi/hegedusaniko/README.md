@@ -84,6 +84,40 @@ Pl {3,8,12,1,2,9,17,43,-8} - uniqe
 {4,7,2,3,-50,3} - nem unique
 Nulla vagy 1 elemű tömb unique lesz.
 
+## Exercise 7.12: priceisright
+
+Írj egy priceIsRight(int[] bids, int price) metódust, mely liciteket fogad egész számokból álló tömbben, és egy egész számot (kikiáltási ár). A metódus válassza ki a a legkedvezőbb ajánlatot, vagyis az árhoz legközelebb eső licitet, de ez a licit alulról közelítse az árat.(Vagyis úgy legyen közelebb hozzá, hogy kisebb nála) Pl {200,300,250,999} licitek és price =280 bemenő paraméterek esetén 250 legyen a visszatérés, ne pedig 300! Ha az összes licit nagyobb, mint a kikiáltási ár, térjen vissza -1-gyel. Feltételezzük, hogy a tömb tartalmaz min egy elemet, és a bemenő paraméterek mindegyike >= 1. A tömb tartalmát ne módosítsd!
+
+## Exercise 7.13: longestsortedsequence
+
+Írj egy longestSortedSequence metódust, mely az átadott tömbben megkeresi azt a leghosszabb részt, ami nem csökkenő, rendezett, és ennek hosszával tér vissza. Pl {3, 8, 10, 1, 9, 14, -3, 0, 14, 207, 56, 98, 12} esetén ez 4, mert keresett rész:-3, 0, 14, 207 négy elem hosszúságú {17, 42, 3, 5, 5, 5, 8, 2, 4, 6, 1, 19} esetén 5, mert: 3, 5, 5, 5, 8 a keresett rész, öt elem hosszú
+
+## Exercise 7.14: contains
+
+Írj egy contains(int[] a1, int[] a2) nevű statikus metódust, mely két egész számokból álló tömböt vár. A metódus azt adja vissza, hogy a paraméretként átadott első tömb tartalmazza-e a másodikat teljes egészében (ugyanazok a számok ugyanolyan sorrendben). Pl:a1:{1,6,2,1,4,1,2,1,8} a2:{1,2,1} a3:{2,1,2} esetén contains(a1,a2) -> true, de contains(a1,a3) -> false Tételezzük fel, hogy minkét tömb legalább 1 elemű. Ne használj String-et!
+
+## Exercise 7.15: collapse
+
+Legyen egy collapse nevű metódus, mely az átadott egész számokbó átadott tömbből létrehoz egy újat, oly módon, hogy a paraméterként kapott tömbben levő számokat sorban, kettesével összeadja. Pl: {7,2,8,9,4,13,7,1,9,10} -> {9,17,17,8,19} Páratlan számú tömb esetén az utolsó szám bekerül az újba: Pl: {1,2,3,4,5} -> {3,7,5} A metódus nem változtassa meg az eredeti tömböt!
+
+## Exercise 7.16: append
+
+Az append metódus kap két, egész számokból álló tömböt, és az elsőhöz hozzáfűzi a másodikat. Pl: a1:{2,4,6} és a2: {1,2,3,4,5} append(a1,a2)-> {2,4,6,1,2,3,4,5} append(a2,a1) -> {1,2,3,4,5,2,4,6}
+
+## Exercise 7.17: vowelcount
+
+A statikus vowelCount metódus egy String-et kap paraméterül, és vissztér egy egész számokból álló tömbbel, melynek tagjai a String-ben szereplő magánhangzók megszámlált értékei. Az angol abc alapján dolgozik, és a betűk indexe rendre:{a,e,i,o,u} Pl vowelCount("i think, therefore i am") ezzel térjen vissza: {1, 3, 3, 1, 0}
+
+## Exercise 7.18: evenbeforeodd
+
+Írj egy evenBeforeOdd metódust, mely a kapott egész számokból álló tömböt úgy rendezi át, hogy a párosak legyenek elöl. A a páros számok sorrendje mindegy, csak ők legyenel elöl. Pl: [5, 4, 2, 11, 9, 10, 4, 7, 3] egy lehetséges megoldása: [4, 2, 10, 4, 5, 11, 9, 7, 3] Kerüld az Arrays.sort, vagy bármilyen ideiglenes tömb használatát!
+
+## Exercise 7.19: wordlengths
+
+## Exercrise 7.20: magicSquare
+
+Write a method called isMagicSquare that accepts a two-dimensional array of integers as a parameter and returns true if it is a magic square. A square matrix is a magic square if it is square in shape (same number of rows as columns, and every row the same length), and all of its row, column, and diagonal sums are equal. For example, [[2, 7, 6], [9, 5, 1], [4, 3, 8]] is a magic square because all eight of the sums are exactly 15.
+
 
 
 @forrás:https://practiceit.cs.washington.edu/
