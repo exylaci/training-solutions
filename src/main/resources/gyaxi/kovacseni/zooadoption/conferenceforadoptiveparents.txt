@@ -1,0 +1,11 @@
+Kedves {orokbefogado_szulo}!
+
+Nagy szeretettel meghívjuk Önt Állatkertünkbe, az állatainkat
+örökbefogadó szülők első Szülői Értekezletére, melynek dátuma:
+{datum}, időpontja: {idopont}.
+A szülői értekezleten elmeséljük, hogyan viseli magát mostanság
+az Ön által örökbefogadott {orokbefogadott_allat}, ezáltal Ön is
+egy kicsit betekintést nyerhet a nálunk folyó munkába.
+
+Örömmel tekintünk a közeli találkozás elé!
+Üdvözlettel: Állatkert
