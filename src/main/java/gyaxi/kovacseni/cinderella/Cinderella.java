@@ -50,7 +50,6 @@ public class Cinderella {
         for (int i = 0; i < NAMES.length; ++i) {
             if (word.toUpperCase().contains(NAMES[i].toUpperCase())) {
                 ++pieces[i];
-                System.out.println(word);
             }
         }
     }

@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Kviz {
     public static final long AVAILABLE_MINUTES = 60;
-    public static final int PIECES_QUESTIONS_TO_ANSWER = 25;
+    public static final int PIECES_QUESTIONS_TO_ANSWER = 143;
 
     private Dao dao;
     private int pieces;
@@ -96,7 +96,7 @@ public class Kviz {
     public static void main(String[] args) {
         Kviz kviz = new Kviz();
         if (kviz.init()) {
-            System.out.print("Jöhet a 25 kérdés? (igen/nem): ");
+            System.out.print("Jöhet a "+PIECES_QUESTIONS_TO_ANSWER+" kérdés? (igen/nem): ");
             if (!new Scanner(System.in).nextLine().toUpperCase().startsWith("I")) {
                 return;
             }
