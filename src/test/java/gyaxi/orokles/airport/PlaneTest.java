@@ -1,6 +1,5 @@
 package gyaxi.orokles.airport;
 
-import exam04retake.hu.nive.ujratervezes.zarovizsga.people.People;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

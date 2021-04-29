@@ -15,8 +15,8 @@ public class ActivityDao {
     }
 
     public void createTable() {
-//        Flyway flyway = Flyway.configure().locations("activitytracker").dataSource(source).load();
-        Flyway flyway = Flyway.configure().dataSource(source).load();
+        Flyway flyway = Flyway.configure()
+                .locations("filesystem:src/main/resources/activitytracker").dataSource(source).load();
         flyway.clean();
         flyway.migrate();
 
