@@ -33,4 +33,15 @@ class FizzBuzzTest {
         assertEquals("Buzz", result.get(9));
         assertEquals("FizzBuzz", result.get(14));
     }
+
+    @Test
+    void letsPlayVersion2() {
+        List<String> result = new FizzBuzz().letsPlay2(20);
+
+        assertEquals(20, result.size());
+        assertEquals("11", result.get(10));
+        assertEquals("Fizz", result.get(8));
+        assertEquals("Buzz", result.get(9));
+        assertEquals("FizzBuzz", result.get(14));
+    }
 }

@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 public class FizzBuzz {
 
+    // Egyszerűen bővíthető akárhány feltétellel
     public List<String> letsPlay(int step) {
         return Stream
                 .iterate(1, n -> n + 1)
@@ -40,5 +41,25 @@ public class FizzBuzz {
             return parts[0];
         }
         return parts[1];
+    }
+
+    // Növekvő feltétel szám esetén, egyre bonyolultabb if
+    public List<String> letsPlay2(int step) {
+        return Stream
+                .iterate(1, n -> n + 1)
+                .limit(step)
+                .map(this::checkFizzBuzz)
+                .collect(Collectors.toList());
+    }
+
+    private String checkFizzBuzz(Integer number) {
+        if (number % 3 == 0 && number % 5 == 0) {
+            return "FizzBuzz";
+        } else if (number % 3 == 0) {
+            return "Fizz";
+        } else if (number % 5 == 0) {
+            return "Buzz";
+        }
+        return String.valueOf(number);
     }
 }
