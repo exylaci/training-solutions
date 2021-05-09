@@ -44,4 +44,26 @@ class FizzBuzzTest {
         assertEquals("Buzz", result.get(9));
         assertEquals("FizzBuzz", result.get(14));
     }
+
+    @Test
+    void letsPlayVersionStreamMindenEgyben() {
+        List<String> result = new FizzBuzz().letsPlay3(20);
+
+        assertEquals(20, result.size());
+        assertEquals("11", result.get(10));
+        assertEquals("Fizz", result.get(8));
+        assertEquals("Buzz", result.get(9));
+        assertEquals("FizzBuzz", result.get(14));
+    }
+
+    @Test
+    void letsPlayVersionWithForCycle() {
+        List<String> result = new FizzBuzz().letsPlay4(20);
+
+        assertEquals(20, result.size());
+        assertEquals("11", result.get(10));
+        assertEquals("Fizz", result.get(8));
+        assertEquals("Buzz", result.get(9));
+        assertEquals("FizzBuzz", result.get(14));
+    }
 }

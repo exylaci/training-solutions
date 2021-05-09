@@ -1,5 +1,6 @@
 package gyaxi.algorithms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -61,5 +62,33 @@ public class FizzBuzz {
             return "Buzz";
         }
         return String.valueOf(number);
+    }
+
+    // Minden egyben a stream-ben. Nem túlságosan "clean code".
+    public List<String> letsPlay3(int steps) {
+        return Stream
+                .iterate(1, n -> n + 1)
+                .limit(steps)
+                .map((i) -> i % 3 == 0 && i % 5 == 0 ? "FizzBuzz" : i % 3 == 0 ? "Fizz" : i % 5 == 0 ? "Buzz" : String.valueOf(i))
+                .collect(Collectors.toList());
+    }
+
+    // klasszikus forciklussal
+    public List<String> letsPlay4(int steps) {
+        List<String> result = new ArrayList<>();
+
+        for (int i = 1; i <= steps; ++i) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                result.add("FizzBuzz");
+            } else if (i % 3 == 0) {
+                result.add("Fizz");
+            } else if (i % 5 == 0) {
+                result.add("Buzz");
+            } else {
+                result.add(String.valueOf(i));
+            }
+        }
+
+        return result;
     }
 }
