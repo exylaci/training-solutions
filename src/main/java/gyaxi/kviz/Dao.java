@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 public class Dao {
+    public static final String FLYWAY_MIGRATION_DIRECTORY = "src/main/resources/gyaxi/kviz";
+
     private JdbcTemplate jdbcTemplate;
 
     public Dao(DataSource source) {
@@ -15,15 +17,19 @@ public class Dao {
 
     private void loadQuestions(DataSource source) {
         Flyway flyway = Flyway.configure()
-                .locations("filesystem:src/main/resources/gyaxi/kviz").dataSource(source).load();
+                .locations("filesystem:" + FLYWAY_MIGRATION_DIRECTORY).dataSource(source).load();
         flyway.clean();
         flyway.migrate();
     }
 
     public int getPieces() {
-        return jdbcTemplate.queryForObject(
-                "SELECT COUNT(id) AS pieces FROM questions",
-                (rs, rowNum) -> rs.getInt("pieces"));
+        try {
+            return jdbcTemplate.queryForObject(
+                    "SELECT COUNT(id) AS pieces FROM questions",
+                    (rs, rowNum) -> rs.getInt("pieces"));
+        } catch (NullPointerException e) {
+            return 0;
+        }
     }
 
     public Question getQuestion(int id) {

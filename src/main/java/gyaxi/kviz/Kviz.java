@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Kviz {
     public static final long AVAILABLE_MINUTES = 60;
-    public static final int PIECES_QUESTIONS_TO_ANSWER = 143;
+    public static final int PIECES_QUESTIONS_TO_ANSWER = 25;
 
     private Dao dao;
     private int pieces;
@@ -96,13 +96,15 @@ public class Kviz {
     public static void main(String[] args) {
         Kviz kviz = new Kviz();
         if (kviz.init()) {
-            System.out.print("Jöhet a "+PIECES_QUESTIONS_TO_ANSWER+" kérdés? (igen/nem): ");
+            System.out.print("Jöhet a " + PIECES_QUESTIONS_TO_ANSWER + " kérdés? (igen/nem): ");
             if (!new Scanner(System.in).nextLine().toUpperCase().startsWith("I")) {
                 return;
             }
             kviz.asking();
         } else {
-            System.out.println("Üres a kérdések adatbázis!");
+            System.out.println("Baj van! Üres a kérdések adatbázis. Valamiért nem futott le a flyway migráció." +
+                    "Ellenőrizd hogy ebben a könyvtárban: " + Dao.FLYWAY_MIGRATION_DIRECTORY +
+                    " található-e V1__*.sql file");
         }
     }
 }
