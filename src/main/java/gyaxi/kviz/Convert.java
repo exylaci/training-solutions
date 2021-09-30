@@ -27,6 +27,7 @@ public class Convert {
                 Path.of("src/main/resources/gyaxi/kviz/questions.txt"), StandardCharsets.UTF_8)) {
             String[] lines = new String[6];
             int index = 0;
+            jdbcTemplate.update("TRUNCATE questions");
             while ((lines[index] = reader.readLine()) != null) {
                 ++index;
                 if (index > 5) {

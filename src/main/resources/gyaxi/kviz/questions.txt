@@ -502,12 +502,6 @@ false
 Nem fordul le az egyessel jelölt sor
 Nem fordul le a kettessel jelölt sor
 
-Melyik állítás hamis a Human osztály leszármazottjára (extends), a következő kódrészlet esetén:##public class Human {##  private String name;##}
-Leszármazottban elérhető a name attribútum, ha a Human osztályban protected láthatósági módosítóval látjuk el
-Definiáljunk egy publikus gettert az attribútumnak, és akkor a leszármazottban is hozzá lehet férni a getterrel
-@A super.name hívással is hozzá lehet férni a leszármazottban
-A protected módosítószó a package private kiterjesztése, használatakor nem csak az azonos csomagban lévő osztályok, hanem bármely leszármazott eléri az adott tagot
-
 Mit kell a megjegyzés helyére írni, hogy a következő kódrészlet 12-t írjon ki?##class Mid {##  public int findMid(int n1, int n2) {##    return (n1 + n2) / 2;##  }##}####public class Calc extends Mid {##  public static void main(String[] args) {##    int n1 = 22, n2 = 2;##    // Egészítsd ki##    System.out.println(n3);##  }##}
 @Calc c = new Calc(); int n3 = c.findMid(n1,n2);
 int n3 = super.findMid(n1,n2);
@@ -856,4 +850,98 @@ Csak az Object osztály metódusait.
 Csak az ArrayList osztály metódusait.
 Csak a Collection interfész metódusait.
 
+Melyik helyes?
+A List osztály extendálja a Collections osztályt.
+A List osztályt extendálja az ArrayList.
+A List interface extendálja a Collections interface-t.
+@A List interface kiterjeszti, extendálja a Collection interface-t.
 
+Melyik állítás igaz?
+@Egy abstract osztály tartalmazhat nem final változókat.
+Egy interface tartalmazhat nem final változókat.
+Egy osztály csak egy interface-t implementálhat.
+Az exteds kulcsszóval jelöljük, ha egy osztálymegvalósít egy interface-t.
+
+Adott az alábbi kódrészlet. Melyik utasítással lehetne helyettesíteni?##catch (NullPointerException npe) {##  // Utasítások##} catch (ArithmeticException ae) {##  // Utasítások##}
+catch (NullPointerException & ArithmeticException e) {}
+catch (NullPointerException e | ArithmeticException e) {}
+@catch (NullPointerException | ArithmeticException e) {}
+catch (NullPointerException npe | ArithmeticException e) {}
+
+Git verziókezelő rendszer esetén melyik utasítással tudunk a lokális repository-ból kódot feltölteni egy távoli (remote) repository-ba, például egy szerverre, vagy a GitHub-ra?
+commit
+@push
+clone
+pull
+
+Mi egy tömb első elemének indexe?
+1
+@0
+2
+3
+
+Mi az az osztály?
+@Egy tervrajz (blueprint) az abból készült objektum működéséhez.
+Egy példány amivel dolgozunk.
+Az objektumok egy halmaza.
+A legkisebb logikai egység a Java nyelvben.
+
+Leszármazó osztály konstruktorában (constructor) hogyan hívjuk meg a szülő osztályban definiált kontruktort (contructor)?
+@A super kulcsszó segítségével.
+A constructor kulcsszó segítségével.
+Az extend kulcsszó segítségével.
+A this kulcsszó segítségével.
+
+Milyen kollekció használatával érdemes a következő feladatot megvalósítani: két halmaz uniója?
+Map
+@Set
+Queue
+List
+
+Melyik igaz az alábbi állítások közül?
+Minden Exception leszármazottja az Error osztálynak.
+A nem kezelendő kivételeket (runtime exceptions) muszáj try szerkezettel lekezelni, vagy a metódus fejében throws-zal deklarálni.
+@Kezelendő kivételeket (checked exceptions) muszáj try szerkezettel lekezelni, vagy a metódus  fejében throws-zal deklarálni.
+Minden Error leszármazottja az Exception osztálynak.
+
+Milyen szintaxissal tudod megkapni a RED enum értékét kívülről?##Public enum Color {##    RED, GREEN, BLUE;##}
+RED
+color.RED
+@Color.RED
+Enum.RED
+
+Az alábbiak közül melyik írja felül (override) ezt a metódust?##void print() {##  System.out.println("Override");##}
+private void print() {}
+public void print(String message) {}
+@public void print() {}
+public int print() {}
+
+Melyik metódus hibás az alábbi interface-ben?##public interface Triangle {##  private int[] getSideLengths();##  public Double getArea();##  void rotate(double radians);##  public boolean isRight();##}
+rotate
+@getSideLengths
+isRight
+getArea
+
+Mit ír ki az alábbi program?##public class EmployeeService {##  public static void main(String[] args) {##    try {##      new EmployeeService().print("foo");##    } catch (Exception e) {##      System.out.println("C");##    }##  }####  public void print(String number) {##    try {##      System.out.println(Integer.parseInt(number));##    } catch (NumberFormatException nfe) {##      System.out.println("A");##      throw new RuntimeException("Not a number");##    } finally {##      System.out.println("B");##    }##  }##}
+A
+AC
+AB
+@ABC
+
+Mi a különbség a FileInputStream és a FileReader között?
+A FileInputStream karakterenként, a FileReader soronként olvassa be a bemenetül kapott file-t.
+Mindkettő karakter alapú beolvasást hajt végre, de a FileReader az újabb és hatékonyabb megoldás.
+@A FileInputStream byte alapú, amíg a FileReader karakter alapú beolvasást tesz lehetővé.
+A FileInputStream karakter alapú, amíg a FileReader byte alapú beolvasást tesz lehetővé.
+
+Mit jelent, ha egy metódus absztrakt?
+@Nincs törzse, azaz nincs megadva a tényleges implementációja, csak a visszatérési értéke, neve és paraméterei.
+Megegyezik a neve egy másik metódusáéval, csak eltérők a paramétereik.
+Nem ismerjük előre a visszatérési érték típusát.
+Nem írható felül a leszármazott osztályban.
+
+Melyik állítás hamis a Human osztály leszármazottjára (extends), a következő kódrészlet esetén:##public class Human {##  private String name;##}
+Leszármazottban elérhető a name attribútum, ha a Human osztályban protected láthatósági módosítóval látjuk el
+Definiáljunk egy publikus gettert az attribútumnak, és akkor a leszármazottban is hozzá lehet férni a getterrel
+@A super.name hívással is hozzá lehet férni a leszármazottban
+A protected módosítószó a package private kiterjesztése, használatakor nem csak az azonos csomagban lévő osztályok, hanem bármely leszármazott eléri az adott tagot
