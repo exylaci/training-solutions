@@ -12,7 +12,7 @@ public class Pokebag {
 
     public void add(Pokemon pokemon) {
         if (pokemon == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Pokemon is a must!");
         }
         pokemons.add(pokemon);
     }
@@ -23,7 +23,7 @@ public class Pokebag {
 
     public Pokemon getByIndex(int index) {
         if (index >= pokemons.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("There are less pokemons in the bag!");
         }
         return pokemons.get(index);
     }
@@ -32,12 +32,12 @@ public class Pokebag {
         return pokemons
                 .stream()
                 .max(Comparator.comparingLong(Pokemon::getStrength))
-                .orElseThrow(() -> new NoSuchElementException());
+                .orElseThrow(() -> new NoSuchElementException("The bag is empty!"));
     }
 
     public Pokemon fight(int indexA, int indexB) {
         if (indexA == indexB) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Pokemons has to be different!");
         }
         Pokemon pokemonA = pokemons.get(indexA);
         Pokemon pokemonB = pokemons.get(indexB);

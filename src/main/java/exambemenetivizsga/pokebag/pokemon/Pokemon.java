@@ -1,6 +1,6 @@
 package exambemenetivizsga.pokebag.pokemon;
 
-public class Pokemon {
+public abstract class Pokemon {
     private int health = 10;
     private int strength;
     private String name;
@@ -26,7 +26,5 @@ public class Pokemon {
         --health;
     }
 
-    public String speak() {
-        return null;
-    }
+    public abstract String speak();
 }

@@ -1,34 +1,37 @@
 package exambemenetivizsga.multiplybymaximum;
 
 public class MultiplyByMaximum {
-    public int[] multiplyByMaximum(int[] numbers, int n) {
-        checkInputs(numbers, n);
+    public int[] multiplyByMaximum(int[] numbers, int frequently) {
+        checkInputs(numbers, frequently);
 
         int[] result = new int[numbers.length];
         int max = findMax(numbers);
 
-        for (int i = 0; i < numbers.length; ++i) {
-            if ((i + 1) % n == 0) {
-                result[i] = numbers[i] * max;
+        for (int index = 0; index < numbers.length; ++index) {
+            if ((index + 1) % frequently == 0) {
+                result[index] = numbers[index] * max;
             } else {
-                result[i] = numbers[i];
+                result[index] = numbers[index];
             }
         }
 
         return result;
     }
 
-    private void checkInputs(int[] numbers, int n) {
-        if (numbers == null || n < 1) {
-            throw new IllegalArgumentException();
+    private void checkInputs(int[] numbers, int frequently) {
+        if (frequently < 1) {
+            throw new IllegalArgumentException("Invalid data for frequently!");
+        }
+        if (numbers == null) {
+            throw new IllegalArgumentException("Numbers is a must!");
         }
     }
 
     private int findMax(int[] numbers) {
         int max = 0;
-        for (int one : numbers) {
-            if (one > max) {
-                max = one;
+        for (int oneNumber : numbers) {
+            if (oneNumber > max) {
+                max = oneNumber;
             }
         }
         return max;
