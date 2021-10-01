@@ -7,7 +7,10 @@ import exambemenetivizsga.pokebag.pokemon.Pokemon;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -205,5 +208,27 @@ class PokebagTest {
         assertEquals(pikachu, secondWinner);
         assertEquals(10, pikachu.getHealth());
         assertEquals(8, bulbasaur.getHealth());
+    }
+
+    @Test
+    void testSpeaches() {
+        Pokemon pikachu = new Pikachu();
+        pokebag.add(pikachu);
+        Pokemon bulbasaur = new Bulbasaur();
+        pokebag.add(bulbasaur);
+
+        PrintStream psOld = System.out;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream psNew = new PrintStream(baos);
+        System.setOut(psNew);
+
+        pokebag.fight(0, 1);
+        pokebag.fight(1, 0);
+
+        System.setOut(psOld);
+        Scanner scanner = new Scanner(baos.toString());
+
+        assertEquals("Pika-pika", scanner.nextLine());
+        assertEquals("Pika-pika", scanner.nextLine());
     }
 }

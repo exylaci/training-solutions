@@ -62,4 +62,14 @@ class BirdWatcherTest {
             assertTrue(actualSpecies.contains(bird));
         }
     }
+
+    @Test
+    void test_getUniqueBirds_empty_database() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update("DELETE FROM birds_spotted");
+
+        List<String> actualSpecies = birdWatcher.getUniqueBirds();
+
+        assertTrue(actualSpecies.isEmpty());
+    }
 }

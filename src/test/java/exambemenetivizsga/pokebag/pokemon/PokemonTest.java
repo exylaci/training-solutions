@@ -35,4 +35,15 @@ class PokemonTest {
         assertEquals("Bob", bulbasaur.getName());
         assertEquals("Charlie", charmander.getName());
     }
+
+    @Test
+    void testSpeaches() {
+        Pokemon pikachu = new Pikachu();
+        Pokemon bulbasaur = new Bulbasaur();
+        Pokemon charmander = new Charmander();
+
+        assertEquals("Pika-pika", pikachu.speak());
+        assertEquals("Bulba-saur", bulbasaur.speak());
+        assertEquals("Char-char", charmander.speak());
+    }
 }
