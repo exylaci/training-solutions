@@ -9,6 +9,40 @@ public class Exercrises {
     public static void main(String[] args) {
     }
 
+    private void studentsOrder() {
+        Scanner scanner = new Scanner(System.in);
+        List<Student> students = new ArrayList<>();
+
+        int HEADCOUNT = Integer.parseInt(scanner.nextLine().trim());
+        for (int i = 0; i < HEADCOUNT; ++i) {
+            students.add(new Student(scanner.nextLine()));
+        }
+        students.stream()
+                .sorted(Comparator.comparing(Student::getCgpa).reversed().thenComparing(Student::getName))
+                .map(Student::getName)
+                .forEach(System.out::println);
+        scanner.close();
+    }
+
+    private class Student {
+        private final String name;
+        private final double cgpa;
+
+        private Student(String all) {
+            String[] parts = all.trim().split(" ");
+            name = String.join(" ", Arrays.copyOfRange(parts, 1, parts.length - 1));
+            cgpa = Double.parseDouble(parts[parts.length - 1].trim());
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public double getCgpa() {
+            return cgpa;
+        }
+    }
+
     public void playersOrder() {
         Scanner scanner = new Scanner(System.in);
         List<Player> players = new ArrayList<>();
@@ -27,6 +61,7 @@ public class Exercrises {
 
     private class Player {
         private final String name;
+
         private final int score;
 
         private Player(String all) {
