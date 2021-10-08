@@ -5,6 +5,122 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Exercrises {
+
+    public static void main(String[] args) {
+    }
+
+    public void playersOrder() {
+        Scanner scanner = new Scanner(System.in);
+        List<Player> players = new ArrayList<>();
+
+        int ATTENDANCES = Integer.parseInt(scanner.nextLine().trim());
+        for (int i = 0; i < ATTENDANCES; ++i) {
+            players.add(new Player(scanner.nextLine()));
+        }
+
+        players
+                .stream()
+                .sorted(Comparator.comparing(Player::getScore).reversed().thenComparing(Player::getName))
+                .map(Player::toString)
+                .forEach(System.out::println);
+    }
+
+    private class Player {
+        private final String name;
+        private final int score;
+
+        private Player(String all) {
+            String[] parts = all.trim().split(" ");
+            name = parts[0].trim();
+            score = Integer.parseInt(parts[1].trim());
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        @Override
+        public String toString() {
+            return name + ' ' + score;
+        }
+    }
+
+    public void pairs() {
+        Scanner scanner = new Scanner(System.in);
+        Set<String> set = new HashSet<>();
+
+        int LINES = Integer.parseInt(scanner.nextLine().trim());
+
+        for (int round = 0; round < LINES; ++round) {
+            set.add(scanner.nextLine().trim().toLowerCase());
+            System.out.println(set.size());
+        }
+        scanner.close();
+    }
+
+
+    private Deque<Character> stack = new ArrayDeque<>();
+
+    public void isBalancedString() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine().trim();
+            boolean result = true;
+            for (char c : line.toCharArray()) {
+                result &= check(c);
+            }
+            if (!stack.isEmpty()) {
+                result = false;
+            }
+            System.out.println(result);
+            stack.clear();
+        }
+    }
+
+    private boolean check(char c) {
+        if (c == '{' || c == '[' || c == '(') {
+            stack.push(c);
+        } else {
+            if (stack.isEmpty()) {
+                return false;
+            } else {
+                char last = stack.pop();
+                return (last != '{' || c == '}')
+                        && (last != '(' || c == ')')
+                        && (last != '[' || c == ']')
+                        && "()[]{}".contains(((Character) c).toString());
+            }
+        }
+        return true;
+    }
+
+    public void map() {
+        Map<String, String> phoneRegister = new HashMap<>();
+
+        Scanner scanner = new Scanner(System.in);
+        int RECORDS = Integer.parseInt(scanner.nextLine().trim());
+
+        for (int i = 0; i < RECORDS; ++i) {
+            String name = scanner.nextLine().trim().toLowerCase();
+            String phoneNumber = scanner.nextLine().trim();
+            phoneRegister.put(name, phoneNumber);
+        }
+        while (scanner.hasNext()) {
+            String name = scanner.nextLine().trim().toLowerCase();
+            if (phoneRegister.containsKey(name)) {
+                System.out.println(name + "=" + phoneRegister.get(name));
+            } else {
+                System.out.println("Not found");
+            }
+        }
+        scanner.close();
+    }
+
     public void listInsertDelete() {
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
