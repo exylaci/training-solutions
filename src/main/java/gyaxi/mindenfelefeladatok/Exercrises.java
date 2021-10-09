@@ -2,14 +2,111 @@ package gyaxi.mindenfelefeladatok;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Collectors;
 
 public class Exercrises {
-
     public static void main(String[] args) {
     }
 
-    private void studentsOrder() {
+    public void priorityQueue() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+
+        PriorityQueue<Student> students =
+                new PriorityQueue<>(Comparator.comparing(Student::getCgpa).reversed().thenComparing(Student::getName));
+        for (int i = 0; i < LINES; ++i) {
+            String[] line = scanner.nextLine().trim().split(" ");
+            if (line[0].equals("ENTER")) {
+                students.add(new Student(line[1], Double.parseDouble(line[2])));
+            } else {
+                students.poll();
+            }
+        }
+
+        scanner.close();
+        if (students.isEmpty()) {
+            System.out.println("EMPTY");
+        } else {
+            students.stream()
+                    .sorted(Comparator.comparing(Student::getCgpa).reversed().thenComparing(Student::getName))
+                    .map(Student::getName)
+                    .forEach(System.out::println);
+        }
+    }
+
+    public void bitset() {
+        Scanner scanner = new Scanner(System.in);
+        int BITS = scanner.nextInt();
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+
+        BitSet b1 = new BitSet(BITS);
+        BitSet b2 = new BitSet(BITS);
+
+        for (int i = 0; i < LINES; ++i) {
+            String[] line = scanner.nextLine().trim().split(" ");
+            if (line[1].equals("1")) {
+                switch (line[0]) {
+                    case "AND" -> b1.and(b2);
+                    case "OR" -> b1.or(b2);
+                    case "XOR" -> b1.xor(b2);
+                    case "SET" -> b1.set(Integer.parseInt(line[2]));
+                    case "FLIP" -> b1.flip(Integer.parseInt(line[2]));
+                }
+            } else {
+                switch (line[0]) {
+                    case "AND" -> b2.and(b1);
+                    case "OR" -> b2.or(b1);
+                    case "XOR" -> b2.xor(b1);
+                    case "SET" -> b2.set(Integer.parseInt(line[2]));
+                    case "FLIP" -> b2.flip(Integer.parseInt(line[2]));
+                }
+            }
+            System.out.println(b1.cardinality() + " " + b2.cardinality());
+        }
+        scanner.close();
+    }
+
+    public void deque() {
+        Scanner scanner = new Scanner(System.in);
+        int TOTAL_SIZE = scanner.nextInt();
+        int SUB_SIZE = scanner.nextInt();
+        scanner.nextLine();
+
+        Deque<Integer> deque = new LinkedBlockingDeque<>(SUB_SIZE);
+        Set<Integer> subSet = new HashSet<>(SUB_SIZE);
+
+        int inElement = 0;
+        int i = 0;
+        for (; i < SUB_SIZE; ++i) {
+            inElement = scanner.nextInt();
+            deque.add(inElement);
+        }
+
+        subSet.addAll(deque);
+        int maximum = subSet.size();
+        int outElement;
+
+        for (; i < TOTAL_SIZE; ++i) {
+            outElement = deque.removeFirst();
+            inElement = scanner.nextInt();
+            deque.add(inElement);
+            if (!deque.contains(outElement)) {
+                subSet.remove(outElement);
+            }
+            subSet.add(inElement);
+
+            maximum = Math.max(maximum, subSet.size());
+        }
+
+        scanner.close();
+        System.out.println(maximum);
+    }
+
+
+    public void studentsOrder() {
         Scanner scanner = new Scanner(System.in);
         List<Student> students = new ArrayList<>();
 
@@ -32,6 +129,11 @@ public class Exercrises {
             String[] parts = all.trim().split(" ");
             name = String.join(" ", Arrays.copyOfRange(parts, 1, parts.length - 1));
             cgpa = Double.parseDouble(parts[parts.length - 1].trim());
+        }
+
+        public Student(String name, double cgpa) {
+            this.name = name;
+            this.cgpa = cgpa;
         }
 
         public String getName() {
@@ -82,6 +184,7 @@ public class Exercrises {
         public String toString() {
             return name + ' ' + score;
         }
+
     }
 
     public void pairs() {

@@ -318,3 +318,144 @@ Samara
 Samiha
 Rumpa
 ```
+
+#Deque
+
+In this problem, you are given N integers.
+You need to find the maximum number of unique integers among all the possible contiguous subarrays of size M.
+
+Note: Time limit is 3 second for this problem.
+
+Input Format:
+The first line of input contains two integers N and M: representing the total number of integers and the size
+of the subarray, respectively. The next line contains N space separated integers.
+
+Constraints:
+- 1<=N<=100000
+- 1<=M<=100000
+- M<N
+- The numbers in the array will range between [0,10000000].
+
+Output Format:
+Print the maximum number of unique integers among all possible contiguous subarrays of size M.
+
+Sample Input:
+```6 3
+5 3 5 2 3 2
+```
+Sample Output:
+```3
+```
+Explanation:
+
+In the sample testcase, there are 4 subarrays of contiguous numbers.
+- s1 = (5,3,5) - Has 2 unique numbers.
+- s2 = (3,5,2) - Has 3 unique numbers.
+- s3 = (5,2,3) - Has 3 unique numbers.
+- s4 = (2,3,2) - Has 2 unique numbers. 
+  
+In these subarrays, there are 2,3,3,2 unique numbers, respectively.
+The maximum amount of unique numbers among all possible contiguous subarrays is 3.
+
+#BitSet
+
+Java's BitSet class implements a vector of bit values (i.e.: false(0) or true()) that grows as needed,
+allowing us to easily manipulate bits while optimizing space (when compared to other collections).
+Any element having a bit value of 1 is called a set bit.
+Given 2 BitSets, B1 and B2, of N size where all bits in both BitSets are initialized to 0, perform a series
+of M operations. After each operation, print the number of set bits in the respective BitSets as two 
+space-separated integers on a new line.
+
+Input Format:
+The first line contains 2 space-separated integers, N (the length of both BitSets B1 and B2) 
+and M (the number of operations to perform), respectively.
+The M subsequent lines each contain an operation in one of the following forms:
+- AND <set> <set>
+- OR <set> <set>
+- XOR <set> <set>
+- FLIP <set> <index>
+- SET <set> <index>
+
+In the list above, <set> is the integer 1 or 2, where 1 denotes B1 and 2 denotes B2.
+<index> is an integer denoting a bit's index in the BitSet corresponding to <set>.
+
+For the binary operations AND, OR and XOR, operands are read from left to right and the BitSet resulting
+from the operation replaces the contents of the first operand. For example:
+
+AND 2 1
+
+B2 is the left operand, and B1 is the right operand. This operation should assign the result of 
+B2 and B1 to B2. (ie. B2 = B2 & B1)
+
+Constraints:
+1<=N<=1000
+1<=M<=10000
+
+Output Format:
+After each operation, print the respective number of set bits in BitSet B1 and BitSet B2 as 2 pieces
+space-separated integers on a new line.
+
+Sample Input
+```5 4
+AND 1 2
+SET 1 4
+FLIP 2 2
+OR 2 1
+```
+Sample Output
+```0 0
+1 0
+1 1
+1 2
+```
+
+#Priority Queue
+
+There are a number of students in a school who wait to be served. Two types of events, ENTER and SERVED,
+can take place which are described below.
+- ENTER: A student with some priority enters the queue to be served.
+- SERVED: The student with the highest priority is served (removed) from the queue.
+
+A unique id is assigned to each student entering the queue. The queue serves the students based on the following criteria (priority criteria):
+- The student having the highest Cumulative Grade Point Average (CGPA) is served first.
+- Any students having the same CGPA will be served by name in ascending case-sensitive alphabetical order.
+- Any students having the same CGPA and name will be served in ascending order of the id.
+
+Input Format:
+The first line contains an integer, N, describing the total number of events.
+Each of the N subsequent lines will be of the following two forms:
+- ENTER name CGPA id: The student to be inserted into the priority queue.
+- SERVED: The highest priority student in the queue was served.
+The locked stub code in the editor reads the input and tests the correctness of the Student and Priorities classes implementation.
+
+Constraints:
+2<=n<=1000
+0<=cgpa<=4.00
+1<=id<=10^5
+2<=|name|<=30
+
+Output Format:
+The locked stub code prints the names of the students yet to be served in the priority order.
+If there are no such student, then the code prints EMPTY.
+
+Sample Input:
+```12
+ENTER John 3.75 50
+ENTER Mark 3.8 24
+ENTER Shafaet 3.7 35
+SERVED
+SERVED
+ENTER Samiha 3.85 36
+SERVED
+ENTER Ashley 3.9 42
+ENTER Maria 3.6 46
+ENTER Anik 3.95 49
+ENTER Dan 3.95 50
+SERVED
+```
+Sample Output 0
+```Dan
+Ashley
+Shafaet
+Maria
+```
