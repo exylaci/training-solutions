@@ -3,10 +3,78 @@ package gyaxi.mindenfelefeladatok;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Exercrises {
     public static void main(String[] args) {
+    }
+
+    private void anagram() {
+        Scanner scanner = new Scanner(System.in);
+        String s1 = scanner.nextLine().trim().toLowerCase();
+        String s2 = scanner.nextLine().trim().toLowerCase();
+        scanner.close();
+
+        Map<Integer, Long> letters1 = s1.chars().boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map<Integer, Long> letters2 = s2.chars().boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        if (letters1.size() != letters2.size()) {
+            System.out.println("Not Anagrams");
+            return;
+        }
+        if (letters1
+                .entrySet()
+                .stream()
+                .filter(one -> letters2.get(one.getKey()) != one.getValue())
+                .count() > 0) {
+            System.out.println("Not Anagrams");
+            return;
+        }
+        System.out.println("Anagrams");
+    }
+
+    private void palindrome() {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        scanner.close();
+
+        for (int i = 0; i < (s.length() + 1) / 2; ++i) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+                System.out.println("No");
+                return;
+            }
+        }
+        System.out.println("Yes");
+    }
+
+    private void compareSubstrings() {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        int size = scanner.nextInt();
+        scanner.close();
+
+        if (size >= s.length()) {
+            System.out.println(s);
+            return;
+        }
+
+        String first = "zzzz";
+        String last = " ";
+        for (int i = 0; i <= s.length() - size; ++i) {
+            String sub = s.substring(i, i + size);
+            if (last.compareTo(sub) < 0) {
+                last = sub;
+            }
+            if (first.compareTo(sub) > 0) {
+                first = sub;
+            }
+        }
+
+        System.out.println(first);
+        System.out.println(last);
     }
 
     public void priorityQueue() {
@@ -200,7 +268,6 @@ public class Exercrises {
         scanner.close();
     }
 
-
     private Deque<Character> stack = new ArrayDeque<>();
 
     public void isBalancedString() {
@@ -295,7 +362,7 @@ public class Exercrises {
         scanner.close();
     }
 
-    public void Array1D() throws IOException {
+    public void array1D() throws IOException {
         Scanner scanner = new Scanner(System.in);
         int ROUNDS = Integer.parseInt(scanner.nextLine().trim());
         for (int round = 0; round < ROUNDS; ++round) {
@@ -345,7 +412,7 @@ public class Exercrises {
         scanner.close();
     }
 
-    public void Arraylist() {
+    public void arrayList() {
         Scanner scanner = new Scanner(System.in);
 
         int y = scanner.nextInt();

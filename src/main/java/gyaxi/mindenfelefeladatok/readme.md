@@ -216,7 +216,8 @@ Output Format:
 Print T lines. In the ith line, print number of unique pairs you have after taking ith pair as input.
 
 Sample Input:
-```5
+```
+5
 john tom
 john mary
 john tom
@@ -225,7 +226,8 @@ mary anna
 ```
 
 Sample Output:
-```1
+```
+1
 2
 2
 3
@@ -263,7 +265,8 @@ The locked stub code in Solution will create a Checker object, use it to sort th
 and print each sorted element.
 
 Sample Input:
-```5
+```
+5
 amy 100
 david 100
 heraldo 50
@@ -272,7 +275,8 @@ aleksa 150
 ```
 
 Sample Output:
-```aleksa 150
+```
+aleksa 150
 amy 100
 david 100
 aakansha 75
@@ -304,7 +308,8 @@ Output Format:
 After rearranging the students according to the above rules, print the first name of each student on a separate line.
 
 Sample Input:
-```5
+```
+5
 33 Rumpa 3.68
 85 Ashis 3.85
 56 Samiha 3.75
@@ -312,7 +317,8 @@ Sample Input:
 22 Fahim 3.76
 ```
 Sample Output:
-```Ashis
+```
+Ashis
 Fahim
 Samara
 Samiha
@@ -340,11 +346,13 @@ Output Format:
 Print the maximum number of unique integers among all possible contiguous subarrays of size M.
 
 Sample Input:
-```6 3
+```
+6 3
 5 3 5 2 3 2
 ```
 Sample Output:
-```3
+```
+3
 ```
 Explanation:
 
@@ -396,14 +404,16 @@ After each operation, print the respective number of set bits in BitSet B1 and B
 space-separated integers on a new line.
 
 Sample Input
-```5 4
+```
+5 4
 AND 1 2
 SET 1 4
 FLIP 2 2
 OR 2 1
 ```
 Sample Output
-```0 0
+```
+0 0
 1 0
 1 1
 1 2
@@ -439,7 +449,8 @@ The locked stub code prints the names of the students yet to be served in the pr
 If there are no such student, then the code prints EMPTY.
 
 Sample Input:
-```12
+```
+12
 ENTER John 3.75 50
 ENTER Mark 3.8 24
 ENTER Shafaet 3.7 35
@@ -454,8 +465,157 @@ ENTER Dan 3.95 50
 SERVED
 ```
 Sample Output 0
-```Dan
+```
+Dan
 Ashley
 Shafaet
 Maria
 ```
+
+#order substrings
+
+We define the following terms:
+- Lexicographical Order, also known as alphabetic or dictionary order, orders characters as follows:
+
+  A<B<...<Z<a<...<y<z
+ 
+  For example, ball < cat, dog < dorm, Happy < happy, Zoo < ball.
+
+- A substring of a string is a contiguous block of characters in the string.
+ 
+  For example, the substrings of abc are a, b, c, ab, bc, and abc.
+
+Given a string, s, and an integer, k, 
+complete the function so that it finds the lexicographically smallest and largest substrings of length k.
+
+Function Description:
+Complete the getSmallestAndLargest function in the editor below.
+getSmallestAndLargest has the following parameters:
+- string s: a string
+- int k: the length of the substrings to find
+
+Returns:
+- string: the string ' + "\n" + ' where and are the two substrings
+
+Input Format:
+The first line contains a string denoting s.
+The second line contains an integer denoting k.
+
+Constraints:
+- 1<=|k|<=1000
+- s consists of English alphabetic letters only (i.e., [a-zA-Z]).
+
+Sample Input:
+```
+welcometojava
+3
+```
+Sample Output:
+```
+ava
+wel
+```
+
+#palindrome
+
+A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward.
+
+Given a string a, print Yes if it is a palindrome, print No otherwise.
+
+Constraints:
+- A will consist at most 50 lower case english letters.
+
+Sample Input:
+```
+madam
+```
+
+Sample Output:
+```
+Yes
+```
+
+#Anagrams
+
+Two strings, a and b, are called anagrams if they contain all the same characters in the same frequencies.
+For this challenge, the test is not case-sensitive. 
+For example, the anagrams of CAT are CAT, ACT, tac, TCA, aTC, and CtA.
+
+Function Description:
+Complete the isAnagram function in the editor.
+
+isAnagram has the following parameters:
+- string a: the first string
+- string b: the second string
+
+Returns
+- boolean: If a and b are case-insensitive anagrams, return true. Otherwise, return false.
+
+Input Format:
+The first line contains a string a.
+The second line contains a string b.
+
+Constraints:
+- 1<=length(a),length(b)<=50
+- Strings a and b consist of English alphabetic characters.
+- The comparison should NOT be case sensitive.
+
+Sample Input:
+```
+anagram
+margana
+```
+Sample Output:
+```
+Anagrams
+```
+Explanation:
+```
+Character 	Frequency: anagram 	Frequency: margana
+A or a          3        	3
+G or g        	1        	1
+N or n        	1        	1
+M or m        	1        	1
+R or r        	1        	1
+```
+The two strings contain all the same letters in the same frequencies, so we print "Anagrams".
+
+Sample Input:
+```
+anagramm
+marganaa
+```
+Sample Output:
+```
+Not Anagrams
+```
+Explanation:
+```
+Character 	Frequency: anagramm 	Frequency: marganaa
+A or a        	3        	4
+G or g        	1        	1
+N or n        	1        	1
+M or m        	2        	1
+R or r        	1        	1
+```
+The two strings don't contain the same number of a's and m's, so we print "Not Anagrams".
+
+Sample Input:
+```
+Hello
+hello
+```
+Sample Output:
+```
+Anagrams
+```
+Explanation:
+```
+Character 	Frequency: Hello 	Frequency: hello
+E or e        	1        	1
+H or h        	1        	1
+L or l        	2        	2
+O or o        	1        	1
+```
+The two strings contain all the same letters in the same frequencies, so we print "Anagrams".
+
