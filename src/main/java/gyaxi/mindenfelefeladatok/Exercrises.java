@@ -4,13 +4,65 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.function.Function;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 
 public class Exercrises {
+
     public static void main(String[] args) {
     }
 
-    private void anagram() {
+    public static final String ONE_PART = "([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])";
+
+    public void ipAddressCheckByRegex() {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            System.out.println(scanner.nextLine().trim().matches(ONE_PART + "\\." + ONE_PART + "\\." + ONE_PART + "\\." + ONE_PART));
+        }
+        scanner.close();
+    }
+    /*
+000.12.12.034
+121.234.12.12
+23.45.12.56
+00.12.123.123123.123
+225.23.1.2
+256.255.0.0
+     */
+
+
+    public void regexPatternSyntaxChecker() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+        for (int i = 0; i < LINES; ++i) {
+            try {
+                Pattern.compile(scanner.nextLine());
+                System.out.println("Valid");
+            } catch (PatternSyntaxException e) {
+                System.out.println("Invalid");
+            }
+        }
+        scanner.close();
+    }
+
+    public void stringtoken() {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine().trim();
+        scanner.close();
+
+        String[] tokens = s.split("[ !,\\?\\._'@]+", 0);
+        if (tokens.length < 1 || tokens[0].isEmpty()) {
+            System.out.println("0");
+            return;
+        }
+
+        System.out.println(tokens.length);
+        Arrays.stream(tokens).forEach(System.out::println);
+    }
+
+    public void anagram() {
         Scanner scanner = new Scanner(System.in);
         String s1 = scanner.nextLine().trim().toLowerCase();
         String s2 = scanner.nextLine().trim().toLowerCase();
@@ -36,7 +88,7 @@ public class Exercrises {
         System.out.println("Anagrams");
     }
 
-    private void palindrome() {
+    public void palindrome() {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         scanner.close();
@@ -50,7 +102,7 @@ public class Exercrises {
         System.out.println("Yes");
     }
 
-    private void compareSubstrings() {
+    public void compareSubstrings() {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         int size = scanner.nextInt();

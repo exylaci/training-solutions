@@ -619,3 +619,119 @@ O or o        	1        	1
 ```
 The two strings contain all the same letters in the same frequencies, so we print "Anagrams".
 
+#String token
+
+Given a string, s, matching the regular expression [A-Za-z !,?._'@]+, split the string into tokens.
+We define a token to be one or more consecutive English alphabetic letters.
+Then, print the number of tokens, followed by each token on a new line.
+Note: You may find the String.split method helpful in completing this challenge.
+
+Input Format:
+A single string, s.
+
+Constraints:
+- 1<= length(s) <= 4*10^5
+- s is composed of any of the following: English alphabetic letters, blank spaces, exclamation points (!), 
+  commas (,), question marks (?), periods (.), underscores (_), apostrophes ('), and at symbols (@).
+
+Output Format:
+On the first line, print an integer, n, denoting the number of tokens in string s (they do not need to be unique).
+Next, print each of the n tokens on a new line in the same order as they appear in input string s.
+
+Sample Input:
+```
+He is a very very good boy, isn't he?
+```
+Sample Output:
+```
+10
+He
+is
+a
+very
+very
+good
+boy
+isn
+t
+he
+```
+Explanation:
+We consider a token to be a contiguous segment of alphabetic characters. There are a total of 10
+such tokens in string s, and each token is printed in the same order in which it appears in string s.
+
+#Regex pattern syntax checker
+
+Using Regex, we can easily match or search for patterns in a text. Before searching for a pattern,
+we have to specify one using some well-defined syntax.
+In this problem, you are given a pattern. You have to check whether the syntax of the given pattern is valid.
+
+Note: In this problem, a regex is only valid if you can compile it using the Pattern.compile method.
+
+Input Format:
+The first line of input contains an integer N, denoting the number of test cases.
+The next N lines contain a string of any printable characters representing the pattern of a regex.
+
+Output Format:
+For each test case, print Valid if the syntax of the given pattern is correct. Otherwise, print Invalid.
+Do not print the quotes.
+
+Sample Input:
+```
+3
+([A-Z])(.+)
+[AZ[a-z](a-z)
+batcatpat(nat
+```
+Sample Output:
+```
+Valid
+Invalid
+Invalid
+```
+
+#Regex ip address checker
+
+Write a class called MyRegex which will contain a string pattern.
+You need to write a regular expression and assign it to the pattern such that it can be used to validate an IP address.
+Use the following definition of an IP address:
+IP address is a string in the form "A.B.C.D", where the value of A, B, C, and D may range from 0 to 255.
+Leading zeros are allowed. The length of A, B, C, or D can't be greater than 3.
+
+Some valid IP address:
+```
+000.12.12.034
+121.234.12.12
+23.45.12.56
+```
+Some invalid IP address:
+```
+000.12.234.23.23
+666.666.23.23
+.213.123.23.32
+23.45.22.32.
+I.Am.not.an.ip
+```
+In this problem you will be provided strings containing any combination of ASCII characters.
+You have to write a regular expression to find the valid IPs.
+Just write the MyRegex class which contains a String pattern.
+The string should contain the correct regular expression.
+
+Sample Input:
+```
+000.12.12.034
+121.234.12.12
+23.45.12.56
+00.12.123.123123.123
+122.23
+Hello.IP
+```
+Sample Output:
+```
+true
+true
+true
+false
+false
+false
+```
