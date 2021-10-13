@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.function.Function;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
@@ -13,24 +14,156 @@ public class Exercrises {
     public static void main(String[] args) {
     }
 
-    public static final String ONE_PART = "([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])";
+    private void contentExtractorOnePerValidTag() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+        for (int line = 0; line < LINES; ++line) {
+
+            Deque<String> tagStack = new ArrayDeque<>();
+            StringBuilder part = new StringBuilder();
+            StringBuilder tag = new StringBuilder();
+            String oneLine = scanner.nextLine().trim();
+            boolean text = false;
+            boolean nothing = true;
+            for (int i = 0; i < oneLine.length(); ++i) {
+                char c = oneLine.charAt(i);
+                switch (c) {
+                    case '<':
+                        text = false;
+                        tag.setLength(0);
+                        break;
+                    case '>':
+                        if (tag.length() > 0 && tag.charAt(0) != '/') {
+                            text = true;
+                            tagStack.push(tag.toString());
+                        }
+                        if (tag.length() > 1 &&
+                                tag.charAt(0) == '/' &&
+                                !tagStack.isEmpty() &&
+                                tagStack.pop().equals(tag.substring(1)) &&
+                                !part.isEmpty()) {
+                            nothing = false;
+                            System.out.println(part);
+                        }
+                        part.setLength(0);
+                        tag.setLength(0);
+                        break;
+                    default:
+                        if (text) {
+                            part.append(c);
+                        } else {
+                            tag.append(c);
+                        }
+                }
+            }
+            if (nothing) {
+                System.out.println("None");
+            }
+
+        }
+        scanner.close();
+    }
+
+    private void contentExtractorStrict() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+
+        Deque<String> tagStack = new ArrayDeque<>();
+        StringBuilder result = new StringBuilder();
+        StringBuilder tag = new StringBuilder();
+        for (int line = 0; line < LINES; ++line) {
+            String oneLine = scanner.nextLine().trim();
+            boolean text = false;
+            for (int i = 0; i < oneLine.length(); ++i) {
+                char c = oneLine.charAt(i);
+                switch (c) {
+                    case '<':
+                        text = false;
+                        tag.setLength(0);
+                        break;
+                    case '>':
+                        if (tag.charAt(0) == '/') {
+                            text = false;
+                            if (tagStack.isEmpty()) {
+                                result.setLength(0);
+                                System.out.println("None");
+                            } else if (tagStack.pop().equals(tag.substring(1))) {
+                                if (tagStack.isEmpty()) {
+                                    System.out.println(result);
+                                    result.setLength(0);
+                                }
+                            } else {
+                                result.setLength(0);
+                                System.out.println("None");
+                                tagStack.clear();
+                            }
+                        } else {
+                            text = true;
+                            tagStack.push(tag.toString());
+                            tag.setLength(0);
+                        }
+                        break;
+                    default:
+                        if (text) {
+                            result.append(c);
+                        } else {
+                            tag.append(c);
+                        }
+                }
+            }
+            if (!tagStack.isEmpty()) {
+                System.out.println("None");
+            }
+            result.setLength(0);
+            tagStack.clear();
+        }
+        scanner.close();
+    }
+
+    public void validateUsername() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < LINES; ++i) {
+            if (scanner.nextLine().matches("[a-z|A-Z](\\w|_){7,29}")) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Invalid");
+            }
+        }
+        scanner.close();
+    }
+
+    public void removeDuplications() {
+        Scanner scanner = new Scanner(System.in);
+        int LINES = scanner.nextInt();
+        scanner.nextLine();
+
+        Pattern pattern = Pattern.compile("\\b(\\w+)(\\s+\\1\\b)*", Pattern.CASE_INSENSITIVE);
+        for (int i = 0; i < LINES; ++i) {
+            String oneLine = scanner.nextLine();
+            Matcher matcher = pattern.matcher(oneLine);
+            while (matcher.find()) {
+                oneLine = oneLine.replaceAll(matcher.group(0), matcher.group(1));
+            }
+            System.out.println(oneLine);
+        }
+        scanner.close();
+    }
+
 
     public void ipAddressCheckByRegex() {
+        String ONE_PART = "([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])";
+
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             System.out.println(scanner.nextLine().trim().matches(ONE_PART + "\\." + ONE_PART + "\\." + ONE_PART + "\\." + ONE_PART));
         }
         scanner.close();
     }
-    /*
-000.12.12.034
-121.234.12.12
-23.45.12.56
-00.12.123.123123.123
-225.23.1.2
-256.255.0.0
-     */
-
 
     public void regexPatternSyntaxChecker() {
         Scanner scanner = new Scanner(System.in);

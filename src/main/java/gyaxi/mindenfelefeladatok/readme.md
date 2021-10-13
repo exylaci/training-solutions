@@ -735,3 +735,160 @@ false
 false
 false
 ```
+
+#Remove duplications by Regex
+
+In this challenge, we use regular expressions (RegEx) to remove instances of words that are repeated more than once, 
+but retain the first occurrence of any case-insensitive repeated word. For example, the words love and to are repeated
+in the sentence I love Love to To tO code. 
+Can you complete the code in the editor so it will turn I love Love to To tO code into I love to code?
+
+To solve this challenge, complete the following three lines:
+1. Write a RegEx that will match any repeated word.
+2. Complete the second compile argument so that the compiled RegEx is case-insensitive.
+3. Write the two necessary arguments for replaceAll such that each repeated word is replaced with the very first 
+   instance the word found in the sentence. It must be the exact first occurrence of the word, as the expected 
+   output is case-sensitive.
+
+Note: This challenge uses a custom checker; you will fail the challenge if you modify anything other than the three 
+locations that the comments direct you to complete. To restore the editor's original stub code, create a new buffer by 
+clicking on the branch icon in the top left of the editor.
+
+Input Format:
+The following input is handled for you the given stub code:
+- The first line contains an integer N, denoting the number of sentences.
+- Each of the N subsequent lines contains a single sentence consisting of English alphabetic letters and whitespace characters.
+
+Constraints:
+- Each sentence consists of at most 10^4 English alphabetic letters and whitespaces.
+- 1<=N<=100
+
+Output Format:
+tub code in the editor prints the sentence modified by the replaceAll line to stdout. The modified string must be a 
+modified version of the initial sentence where all repeat occurrences of each word are removed.
+
+Sample Input:
+```
+5
+Goodbye bye bye world world world
+Sam went went to to to his business
+Reya is is the the best player in eye eye game
+in inthe
+Hello hello Ab aB
+```
+
+Sample Output:
+```
+Goodbye bye world
+Sam went to his business
+Reya is the best player in eye game
+in inthe
+Hello Ab
+```
+Explanation:
+1. We remove the second occurrence of bye and the second and third occurrences of world from Goodbye bye bye world world world to get Goodbye bye world.
+2. We remove the second occurrence of went and the second and third occurrences of to from Sam went went to to to his business to get Sam went to his business.
+3. We remove the second occurrence of is, the second occurrence of the, and the second occurrence of eye from Reya is is the the best player in eye eye game to get Reya is the best player in eye game.
+4. The sentence in inthe has no repeated words, so we do not modify it.
+5. We remove the second occurrence of ab from Hello hello Ab aB to get Hello Ab. It's important to note that our matching is case-insensitive, and we specifically retained the first occurrence of the matched word in our final string.
+
+#Validate user name by Regex
+
+You are updating the username policy on your company's internal networking platform. According to the policy, a username
+is considered valid if all the following constraints are satisfied:
+- The username consists of 8 to 30 characters inclusive. If the username consists of less than 8 or greater than 30
+  characters, then it is an invalid username.
+- The username can only contain alphanumeric characters and underscores (_). Alphanumeric characters describe the 
+  character set consisting of lowercase characters [a-z], uppercase characters [A-Z], and digits [0-1].
+- The first character of the username must be an alphabetic character, i.e., either lowercase character [a-z] or
+  uppercase character [A-Z].
+
+For example:
+```
+Username 	    Validity
+Julia           INVALID;     Username length < 8 characters
+Samantha        VALID
+Samatha_21      VALID
+1Samantha       INVALID;     Username begins with non-alphabetic character
+Samantha?10_2A  INVALID;     '?' character not allowed
+```
+Update the value of regularExpression field in the UsernameValidator class so that the regular expression only matches 
+with valid usernames.
+
+Input Format:
+The first line of input contains an integer N, describing the total number of usernames. Each of the next N lines 
+contains a string describing the username. The locked stub code reads the inputs and validates the username.
+
+Constraints:
+- 1<=N<=100
+- The username consists of any printable characters.
+
+Output Format:
+For each of the usernames, the locked stub code prints Valid if the username is valid; otherwise Invalid each on a new line.
+
+Sample Input:
+```
+8
+Julia
+Samantha
+Samantha_21
+1Samantha
+Samantha?10_2A
+JuliaZ007
+Julia@007
+_Julia007
+```
+Sample Output:
+```
+Invalid
+Valid
+Valid
+Invalid
+Invalid
+Valid
+Invalid
+Invalid
+```
+
+#Tag Content Extractor
+
+In a tag-based language like XML or HTML, contents are enclosed between a start tag and an end tag like
+<tag>contents</tag>. Note that the corresponding end tag starts with a /.
+Given a string of text in a tag-based language, parse this text and retrieve the contents enclosed within sequences
+of well-organized tags meeting the following criterion:
+1. The name of the start and end tags must be same. The HTML code `<h1>Hello World</h2>` is not valid, because the text 
+   starts with an h1 tag and ends with a non-matching h2 tag.
+2. Tags can be nested, but content between nested tags is considered not valid. For example, in 
+   `<h1><a>contents</a>invalid</h1>`, contents is valid but invalid is not valid.
+3. Tags can consist of any printable characters.
+
+Input Format:
+The first line of input contains a single integer, N (the number of lines).
+The N subsequent lines each contain a line of text.
+
+Constraints:
+- 1<=N<=100
+- Each line contains a maximum of 10^4 printable characters.
+- The total number of characters in all test cases will not exceed 10^6.
+
+Output Format
+For each line, print the content enclosed within valid tags.
+If a line contains multiple instances of valid content, print out each instance of valid content on a new line; 
+if no valid content is found, print None.
+
+Sample Input:
+```
+4
+<h1>Nayeem loves counseling</h1>
+<h1><h1>Sanjay has no watch</h1></h1><par>So wait for a while</par>
+<Amee>safat codes like a ninja</amee>
+<SA premium>Imtiaz has a secret crush</SA premium>
+```
+Sample Output:
+```
+Nayeem loves counseling
+Sanjay has no watch
+So wait for a while
+None
+Imtiaz has a secret crush
+```
